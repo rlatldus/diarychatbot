@@ -14,9 +14,8 @@ services:
 
   my-database:
     image: mysql:latest
-    environment:
-      MYSQL_DATABASE: 'diaryjjang'
-      MYSQL_ROOT_PASSWORD: 'root'
+    env_file:
+      - .env.db
     ports:
       - 3306:3306
 
