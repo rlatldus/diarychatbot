@@ -14,7 +14,7 @@ export class JwtKakaoStrategy extends PassportStrategy(Strategy, 'kakao') {
   }
 
   validate(accessToken: string, refreshToken: string, profile: Profile) {
-    // console.log('kakao 프로필', profile);
+    console.log('kakao 프로필', profile);
     // profile 받는 항목들은 카카오 developer 사이트에서 설정 가능
     return {
       email: profile._json.kakao_account.email,

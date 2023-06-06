@@ -17,7 +17,7 @@ export class JwtGoogleStrategy extends PassportStrategy(Strategy, 'google') {
 
   validate(accessToken: string, refreshToken: string, profile: Profile) {
     // { email: c@c.com, sub: qkwefuasdij-012093sd }
-    // console.log(profile);
+    console.log(profile);
     return {
       email: profile.emails[0].value,
       password: profile.id,
