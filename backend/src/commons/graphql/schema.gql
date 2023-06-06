@@ -58,8 +58,9 @@ type Query {
   fetchBoards: [Board!]!
   fetchBoard(number: Float!): Board!
   fetchMyBoards: [Board!]!
-  fetchUser: String!
-  findOneByEmail(email: String!): String!
+  fetchUsers: [User!]!
+  fetchUser: User!
+  findOneByEmail(email: String!): User!
   fetchMyDiary: [ChatGPT!]!
   fetchMyDiaryOne(id: String!): ChatGPT!
 }
@@ -75,8 +76,8 @@ type Mutation {
   deleteBoard(number: Float!): Boolean!
   createUser(createUserInput: CreateUserInput!): User!
   deleteUser: String!
-  updateUser(updateUserInput: CreateUserInput!): String!
-  updatePassword(email: String!, password: String!, newPassword: String!): String!
+  updateUser(updateUserInput: CreateUserInput!): User!
+  updatePassword(email: String!, password: String!, newPassword: String!): User!
   createDiary(createChatInput: createChatInput!): ChatGPT!
   deleteMyDiary(id: String!): String!
   updateMyDiary(id: String!, updateChatInput: UpdateChatInput!): ChatGPT!

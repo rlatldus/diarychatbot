@@ -5,11 +5,8 @@ import axios from 'axios';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ChatGPT } from './entities/chat-gpt.entity';
-/* 옷을 추천 해주는 ai 챗봇
-curl 방식을 변형해 axios 로 변경해 만든 방식과
-nodejs 에서 제공하는 openai 라이브러리를 사용한 방식이 있습니다.
-둘다 같은 기능이긴하지만 위에 node 는 참고용으로 만들고 아래 axios 방식으로 
-사용중입니다
+/* 일기를 쓰면 오늘 하루의 점수와 조언을 해주는 ai 챗봇
+axios 방식을 사용해 chatgpt api 사용
 */
 
 @Injectable()
@@ -80,7 +77,7 @@ export class ChatGPTService {
       scoreStr = scoreStr.slice(0,3)
     }// 100점이 넘어가면 100점으로 자르기
     let score = parseInt(scoreStr, 10); // string to number
-    if(score > 100 || score <= 0){
+    if(score >= 100 || score <= 0){
       score = 0;
     }
     // console.log(score)

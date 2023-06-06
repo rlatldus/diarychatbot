@@ -26,21 +26,32 @@ export class UserResolver {
     return this.userService.create({ email, hashedPassword, name });
   }
 
+  // 전체 조회
   @UseGuards(GqlAuthAccessGuard)
-  @Query(() => String)
-  fetchUser(
-    @CurrentUser() currentUser: ICurrentUser, //
-  ) {
-    console.log('유저정보는??!!!', currentUser);
-    return currentUser;
+  @Query(() => [User])
+  async fetchUsers() {
+    return await this.userService.findAll();
   }
 
+  // 로그인 된 유저 조회
   @UseGuards(GqlAuthAccessGuard)
-  @Query(() => String)
+  @Query(() => User)
+  async fetchUser(
+    @CurrentUser() currentUser: ICurrentUser, //
+  ) {
+    console.log(currentUser.email);
+    return await this.userService.findOne({ email: currentUser.email });
+  }
+
+  // 이메일로 유저 조회
+  @UseGuards(GqlAuthAccessGuard)
+  @Query(() => User)
   async findOneByEmail(
     @Args('email') email: string){
     return await this.userService.findOne({email});
   }
+
+  // 유저 삭제
   @UseGuards(GqlAuthAccessGuard)
   @Mutation(() => String)
   async deleteUser(
@@ -52,8 +63,9 @@ export class UserResolver {
     await this.authService.blackList({context})
     return result;
   }
+  // 유저 수정
   @UseGuards(GqlAuthAccessGuard)
-  @Mutation(() => String)
+  @Mutation(() => User)
   async updateUser(
     @CurrentUser() currentUser: ICurrentUser, //
     @Args('updateUserInput') updateUserInput: CreateUserInput,
@@ -61,8 +73,9 @@ export class UserResolver {
     
     return await this.userService.update({user:currentUser, updateUserInput});
   }
+  // 비밀번호 변경
   @UseGuards(GqlAuthAccessGuard)
-  @Mutation(() => String)
+  @Mutation(() =>  User)
   async updatePassword(
     @CurrentUser() currentUser: ICurrentUser, //
     @Args('email') email: string,

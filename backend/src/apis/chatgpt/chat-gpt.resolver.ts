@@ -43,6 +43,7 @@ export class ChatGPTResolver {
     @Args('id') id: string,
   ){
     const result = await this.chatGPTService.findMyDiaryOne({user : currentUser, id})
+    console.log(result)
     return result
   }
 
