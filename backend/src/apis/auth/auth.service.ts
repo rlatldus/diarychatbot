@@ -38,6 +38,8 @@ export class AuthService {
 
   async loginOauth({ req, res }) {
     // 1. 가입확인
+
+    console.log(req.user)
     let user = await this.userService.findOne({ email: req.user.email });
     
     // 2. 회원가입(가입 안되있을 시)
