@@ -10,12 +10,20 @@ export class UserService {
     private readonly userRepository: Repository<User>,
   ) {}
 
+  //유저전체검색
+  async findAll(){
+    return await this.userRepository.find({
+      where:{ deletedAt: null},
+    });
+  }
   //유저검색
   async findOne({ email }) {
-    return await this.userRepository.findOne(
+    const user= await this.userRepository.findOne(
       {
         where:{ email: email , deletedAt: null},
       });
+      console.log(user)
+      return user;
   }
   //유저생성
   async create({ email, hashedPassword: password, name}) {
