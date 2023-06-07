@@ -45,6 +45,7 @@ type ChatGPT {
   id: String!
   title: String!
   ask: String!
+  sticker_color: String!
   answer: String!
   score: Float!
   user: User!
@@ -110,9 +111,17 @@ input CreateUserInput {
 input createChatInput {
   title: String!
   ask: String!
+  sticker_color: sticker_color!
+}
+
+enum sticker_color {
+  scarlet
+  gray
+  orange
 }
 
 input UpdateChatInput {
   title: String
   ask: String
+  sticker_color: sticker_color
 }

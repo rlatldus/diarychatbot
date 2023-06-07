@@ -15,7 +15,7 @@ export class UserResolver {
     private readonly userService: UserService, //
     private readonly authService: AuthService,
   ) {}
-
+// 유저 생성 
   @Mutation(() => User)
   async createUser(
     @Args('createUserInput') createUserInput: CreateUserInput,
