@@ -1,4 +1,5 @@
 import { Field, InputType } from "@nestjs/graphql";
+import { sticker_color } from "../entities/chat-gpt.entity";
 
 @InputType()
 export class createChatInput {
@@ -8,5 +9,8 @@ export class createChatInput {
 
     @Field(() => String)
     ask: string;
+
+    @Field(() => sticker_color)
+    sticker_color: sticker_color;
     
   }

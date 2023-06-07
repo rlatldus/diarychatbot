@@ -65,7 +65,7 @@ export class ChatGPTResolver {
     @Args('id') id: string,
     @Args('updateChatInput') updateChatInput: UpdateChatInput,
   ){
-    const {ask, title} = updateChatInput
+    // const {ask, title} = updateChatInput
     // if(ask === ''){
     //   throw new Error('내용을 입력해주세요')
     // }
