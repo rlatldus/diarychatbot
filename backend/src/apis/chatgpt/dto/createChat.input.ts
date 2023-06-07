@@ -11,6 +11,6 @@ export class createChatInput {
     ask: string;
 
     @Field(() => sticker_color)
-    sticker_color: sticker_color;
+    stickerColor: sticker_color;
     
   }
