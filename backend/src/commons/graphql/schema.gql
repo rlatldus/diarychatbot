@@ -111,7 +111,7 @@ input CreateUserInput {
 input createChatInput {
   title: String!
   ask: String!
-  sticker_color: sticker_color!
+  stickerColor: sticker_color!
 }
 
 enum sticker_color {
@@ -123,5 +123,5 @@ enum sticker_color {
 input UpdateChatInput {
   title: String
   ask: String
-  sticker_color: sticker_color
+  stickerColor: sticker_color
 }

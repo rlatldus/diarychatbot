@@ -77,7 +77,7 @@ export class ChatGPTService {
       scoreStr = scoreStr.slice(0,3)
     }// 100점이 넘어가면 100점으로 자르기
     let score = parseInt(scoreStr, 10); // string to number
-    if(score >= 100 || score <= 0){
+    if(score > 100 || score <= 0){
       score = 0;
     }
     // console.log(score)
