@@ -19,6 +19,7 @@ export class AuthService {
       { email: user.email, sub: user.id ,name: user.name},
       { secret: process.env.REFRESH_TOKEN_KEY, expiresIn: '2w' },
     );
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
     res.setHeader('Access-Control-Allow-Origin', 'https://jintakim.shop')
     res.setHeader(
       'Set-Cookie',
