@@ -15,7 +15,7 @@ export class AuthResolver {
 
   //바로 accessToken 발행하는 로그인
   @Mutation(() => String)
-  async tokenlogin(
+  async login(
     @Args('email') email: string, //
     @Args('password') password: string,
     @Context() context: any,
@@ -32,35 +32,35 @@ export class AuthResolver {
     // 4. refreshToken(=JWT) 을 만들어서 프론트 엔드 쿠키에 보내주기
    
     await this.authService.setRefreshToken({ user, res: context.res });
-    console.log('context.res', context.res)
+    // console.log('context.res', context.res)
     // 5. 일치하는 유저 있으면 토큰 발행
 
     return this.authService.getAccessToken({ user });
   }
   //refreshToken만 발행 하는 로그인 -> 후에 restoreAccessToken로 accessToken 발행 해서 사용
-  @Mutation(() => String)
-  async login(
-    @Args('email') email: string, //
-    @Args('password') password: string,
-    @Context() context: any,
-  ) {
-    // 1.로그인
-    const user = await this.userService.findOne({ email });
+  // @Mutation(() => String)
+  // async onlyRefreshLogin(
+  //   @Args('email') email: string, //
+  //   @Args('password') password: string,
+  //   @Context() context: any,
+  // ) {
+  //   // 1.로그인
+  //   const user = await this.userService.findOne({ email });
 
-    //2. 없으면 에러
-    if (!user) throw new UnprocessableEntityException('이메일이 없습니다');
-    // 3. 아이디 유 비밀번호가 틀림 에러
-    const isAuth = await bcrypt.compare(password, user.password);
-    if (!isAuth) throw new UnprocessableEntityException('비밀번호가 틀립니다');
+  //   //2. 없으면 에러
+  //   if (!user) throw new UnprocessableEntityException('이메일이 없습니다');
+  //   // 3. 아이디 유 비밀번호가 틀림 에러
+  //   const isAuth = await bcrypt.compare(password, user.password);
+  //   if (!isAuth) throw new UnprocessableEntityException('비밀번호가 틀립니다');
 
-    // 4. refreshToken(=JWT) 을 만들기
-    await this.authService.setRefreshToken({ user, res: context.res });
+  //   // 4. refreshToken(=JWT) 을 만들기
+  //   await this.authService.setRefreshToken({ user, res: context.res });
     
-    // 5. 리턴
-    console.log(`${user.email} 님 로그인 성공`);
+  //   // 5. 리턴
+  //   console.log(`${user.email} 님 로그인 성공`);
     
-    return `${user.email} 님 로그인 성공`;
-  }
+  //   return `${user.email} 님 로그인 성공`;
+  // }
 
   //refreshToken으로 accessToken 발행
   @UseGuards(GqlAuthRefreshGuard)
