@@ -32,7 +32,7 @@ export class AuthResolver {
     // 4. refreshToken(=JWT) 을 만들어서 프론트 엔드 쿠키에 보내주기
    
     await this.authService.setRefreshToken({ user, res: context.res });
-    console.log('context.res', context.res)
+    // console.log('context.res', context.res)
     // 5. 일치하는 유저 있으면 토큰 발행
 
     return this.authService.getAccessToken({ user });
