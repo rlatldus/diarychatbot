@@ -19,11 +19,13 @@ export class AuthService {
       { email: user.email, sub: user.id ,name: user.name},
       { secret: process.env.REFRESH_TOKEN_KEY, expiresIn: '2w' },
     );
-    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Origin','http://localhost:3000', 'http://localhost:5000')
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
     res.setHeader(
       'Set-Cookie',
-      `refreshToken=${refreshToken}; path=/; domain=${process.env.MAIN_DOMAIN}; SameSite=None; Secure; httpOnly;`
+      `refreshToken=${refreshToken}; path=/; SameSite=None; Secure; httpOnly;`
     );
+    //domain=${process.env.MAIN_DOMAIN};
   }
 
 //accessToken 발행
