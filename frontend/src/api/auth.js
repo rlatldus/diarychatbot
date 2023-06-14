@@ -33,8 +33,12 @@ export const logout = async () => {
 };
 
 export const getToken = async () => {
-    const response = await instance.post('', {
-        query: `mutation{restoreAccessToken}`,
-    });
+    const response = await instance.post(
+        '',
+        {
+            query: `mutation{restoreAccessToken}`,
+        },
+        { withCredentials: true },
+    );
     return response;
 };
