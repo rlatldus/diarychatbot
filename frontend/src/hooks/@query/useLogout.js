@@ -5,7 +5,10 @@ import { userStorage } from '../../util/userStorage';
 
 export const useLogout = (navigate) => {
     return useMutation(logout, {
-        onSuccess: () => {
+        onSuccess: (response) => {
+            if (response?.data?.errors) {
+                return toast.error(`${response.data.errors[0].message}`);
+            }
             toast.success('로그아웃에 성공했습니다.');
             navigate('/', { replace: true });
             userStorage.remove();
