@@ -68,7 +68,6 @@ type Query {
 
 type Mutation {
   createBoardCategory(name: String!): BoardCategory!
-  tokenlogin(email: String!, password: String!): String!
   login(email: String!, password: String!): String!
   restoreAccessToken: String!
   logout: String!

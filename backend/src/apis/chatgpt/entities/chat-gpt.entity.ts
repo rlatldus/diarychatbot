@@ -1,11 +1,19 @@
-import { Field, ObjectType, registerEnumType } from "@nestjs/graphql";
-import { User } from "src/apis/users/entities/user.entity";
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Field, ObjectType, registerEnumType } from '@nestjs/graphql';
+import { User } from 'src/apis/users/entities/user.entity';
+import {
+    Column,
+    CreateDateColumn,
+    DeleteDateColumn,
+    Entity,
+    ManyToOne,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+} from 'typeorm';
 
 export enum sticker_color {
     scarlet = '#dfb1a3',
     gray = '#A5A2AA',
-    orange = '#F3AC7F'
+    orange = '#F3AC7F',
 }
 
 registerEnumType(sticker_color, {
@@ -27,15 +35,19 @@ export class ChatGPT {
     @Field(() => String)
     ask: string;
 
-    @Column({type: 'enum', enum: sticker_color, default: sticker_color.scarlet})
+    @Column({
+        type: 'enum',
+        enum: sticker_color,
+        default: sticker_color.scarlet,
+    })
     @Field(() => String)
     sticker_color: string;
 
-    @Column({length: 600})
+    @Column({ length: 600 })
     @Field(() => String)
     answer: string;
 
-    @Column({default: 0})
+    @Column({ default: 0 })
     @Field(() => Number)
     score: number;
 
@@ -53,6 +65,4 @@ export class ChatGPT {
     @UpdateDateColumn()
     @Field(() => Date)
     updatedAt: Date;
-
-    
 }
