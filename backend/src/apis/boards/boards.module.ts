@@ -7,7 +7,7 @@ import { BoardTag } from '../boardTag/entities/boardTag.entity';
 import { BoardCategory } from '../boardCategory/entities/boardCategory.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Board, BoardCategory, BoardTag])],
-  providers: [BoardResolver, BoardService],
+    imports: [TypeOrmModule.forFeature([Board, BoardCategory, BoardTag])],
+    providers: [BoardResolver, BoardService],
 })
 export class BoardModule {}

@@ -41,7 +41,7 @@ export class ChatGPT {
         default: sticker_color.scarlet,
     })
     @Field(() => String)
-    sticker_color: string;
+    color: string;
 
     @Column({ length: 600 })
     @Field(() => String)
