@@ -56,13 +56,15 @@ export class AuthService {
             const createUser = { ...rest, hashedPassword: password };
             user = await this.userService.create({ ...createUser });
         }
-        console.log(process.env.MAIN_URI);
+        // console.log(process.env.MAIN_URI);
 
         // 3. 로그인
         this.setRefreshToken({ user, res });
 
         // redirect
-        res.redirect(`${process.env.MAIN_URI}`);
+        res.redirect(`${process.env.MAIN_URI}${user.id}`);
+
+        // return this.getAccessToken({ user });
     }
 
     async blackList({ context }) {
@@ -85,8 +87,6 @@ export class AuthService {
         const refresh_end = Math.floor(
             (refresh_time.getTime() - now.getTime()) / 1000,
         );
-        console.log('access', access);
-        console.log('refresh', refresh);
         // 2. 블랙리스트에 저장 레디스
         try {
             jwt.verify(access, process.env.ACCESS_TOKEN_KEY);
