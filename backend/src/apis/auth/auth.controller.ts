@@ -18,7 +18,7 @@ export class AuthController {
     @Get('/login/google')
     @UseGuards(AuthGuard('google'))
     async loginGoogle(@Req() req: Request & IOauthUser, @Res() res: Response) {
-        console.log(req.user);
+        // console.log(req.user);
         this.authService.loginOauth({ req, res });
     }
 

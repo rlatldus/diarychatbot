@@ -7,7 +7,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { ChatGPTService } from './chat-gpt.service';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createChatInput } from './dto/createChat.input';
-import { UseGuards } from '@nestjs/common';
+import { BadRequestException, UseGuards } from '@nestjs/common';
 import { GqlAuthAccessGuard } from 'src/commons/auth/gql-auth.guard';
 import { CurrentUser, ICurrentUser } from 'src/commons/auth/gql-user.param';
 import { ChatGPT } from './entities/chat-gpt.entity';
@@ -59,7 +59,15 @@ export class ChatGPTResolver {
         @Args('id') id: string,
     ) {
         // console.log(currentUser)
-        return await this.chatGPTService.delete({ user: currentUser, id });
+        const result = await this.chatGPTService.delete({
+            user: currentUser,
+            id,
+        });
+        console.log(result);
+        if (result != true) {
+            throw new BadRequestException(result[1]);
+        }
+        return result;
     }
     //일기 수정
     @UseGuards(GqlAuthAccessGuard)
