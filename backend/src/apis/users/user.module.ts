@@ -7,7 +7,13 @@ import { JwtAccessStrategy } from 'src/commons/auth/jwt-access.strategy';
 import { AuthService } from '../auth/auth.service';
 import { JwtService } from '@nestjs/jwt';
 @Module({
-  imports: [TypeOrmModule.forFeature([User]), ],
-  providers: [JwtAccessStrategy, UserResolver, UserService, AuthService, JwtService],
+    imports: [TypeOrmModule.forFeature([User])],
+    providers: [
+        JwtAccessStrategy,
+        UserResolver,
+        UserService,
+        AuthService,
+        JwtService,
+    ],
 })
 export class UserModule {}

@@ -5,8 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ChatGPT } from './entities/chat-gpt.entity';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([ChatGPT])],
-  controllers: [],
-  providers: [ChatGPTService, ChatGPTResolver],
+    imports: [TypeOrmModule.forFeature([ChatGPT])],
+    controllers: [],
+    providers: [ChatGPTService, ChatGPTResolver],
 })
 export class ChatGPTModule {}

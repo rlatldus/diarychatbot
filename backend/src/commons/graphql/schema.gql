@@ -45,7 +45,7 @@ type ChatGPT {
   id: String!
   title: String!
   ask: String!
-  sticker_color: String!
+  color: String!
   answer: String!
   score: Float!
   user: User!
@@ -68,7 +68,6 @@ type Query {
 
 type Mutation {
   createBoardCategory(name: String!): BoardCategory!
-  tokenlogin(email: String!, password: String!): String!
   login(email: String!, password: String!): String!
   restoreAccessToken: String!
   logout: String!
@@ -111,7 +110,7 @@ input CreateUserInput {
 input createChatInput {
   title: String!
   ask: String!
-  stickerColor: sticker_color!
+  color: sticker_color!
 }
 
 enum sticker_color {
@@ -123,5 +122,5 @@ enum sticker_color {
 input UpdateChatInput {
   title: String
   ask: String
-  stickerColor: sticker_color
+  color: sticker_color
 }
