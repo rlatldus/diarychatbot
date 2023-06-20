@@ -29,7 +29,7 @@ instance.interceptors.response.use(async (response) => {
                     data: { restoreAccessToken: newAccessToken },
                 },
             } = await getToken();
-            console.log(response?.data?.errors);
+
             userStorage.set(newAccessToken);
             axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
             originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
