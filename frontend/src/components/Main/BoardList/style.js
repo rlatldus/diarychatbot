@@ -3,7 +3,7 @@ import { StickerAlign } from '../../@shared/Sticker/style';
 
 export const BoardCard = styled.div`
     position: relative;
-    max-width: 25rem;
+    width: 25rem;
     height: 35rem;
     padding: 5rem 3rem;
     background-color: #fff;
