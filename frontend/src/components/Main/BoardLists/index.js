@@ -28,7 +28,7 @@ const BoardLists = ({ fetchMyDiary }) => {
                         daysOfWeek={dayOfWeekString}
                         title={diary.title}
                         desc={diary.ask}
-                        stickerColor={diary.sticker_color}
+                        stickerColor={diary.color}
                     />
                 );
             })}
