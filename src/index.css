@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'notoSerifKR';
+    src: url(./assets/fonts/Noto_Serif_KR/NotoSerifKR-Medium.otf);
+}
+
+:root {
+    --font-notoSerifKR: 'notoSerifKR';
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    font-size: 62.5%;
+    -webkit-overflow-scrolling: auto;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+ul,
+ol,
+dl {
+    list-style: none;
+
+}
+
+button {
+    border: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
