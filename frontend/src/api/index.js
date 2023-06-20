@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { getUserToken, isAccessTokenExpired } from '../util/auth';
+import { getUserToken } from '../util/auth';
 import { userStorage } from '../util/userStorage';
-import { redirect } from 'react-router-dom';
-import { getToken, logout } from './auth';
+import { getToken } from './auth';
 
 export const instance = axios.create({
     baseURL: 'https://jintakim.shop/graphql',
@@ -19,36 +18,25 @@ instance.interceptors.request.use(
     },
 );
 
-instance.interceptors.response.use(
-    (response) => {
-        return response;
-    },
-    async (error) => {
-        const { config } = error;
-        if (error.status === 401 && isAccessTokenExpired()) {
-            console.log('확인1');
-            const originalRequest = config;
-            try {
-                console.log('확인2');
-                const {
-                    data: {
-                        data: { restoreAccessToken: newAccessToken },
-                    },
-                } = await getToken();
+instance.interceptors.response.use(async (response) => {
+    const { config } = response;
+    if (response?.data?.errors?.[0]?.message === 'Unauthorized') {
+        const originalRequest = config;
 
-                userStorage.set(newAccessToken);
-
-                axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
-                originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-                return axios(originalRequest);
-            } catch {
-                console.log('확인3');
-                userStorage.remove();
-                await logout();
-                redirect('/');
-            }
+        try {
+            const {
+                data: {
+                    data: { restoreAccessToken: newAccessToken },
+                },
+            } = await getToken();
+            console.log(response?.data?.errors);
+            userStorage.set(newAccessToken);
+            axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
+            originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+            return axios(originalRequest);
+        } catch (error) {
+            //
         }
-
-        throw new Error(error);
-    },
-);
+    }
+    return response;
+});
