@@ -30,9 +30,7 @@ export class BoardResolver {
   @Query(() => [Board])
   async fetchMyBoards(
     @CurrentUser() currentUser: ICurrentUser,
-    // @Context() context: any,
   ) {
-    // const currentUser : ICurrentUser = context.req.user;
     return await this.boardService.findOneMY({user:currentUser});
   }
 
@@ -43,7 +41,6 @@ export class BoardResolver {
     @Args('createBoardInput') createBoardInput: CreateBoardInput,
     @CurrentUser() currentUser: ICurrentUser,
   ) {
-    // console.log(createBoardInput)
     const result = await this.boardService.create({ createBoardInput, user : currentUser });
     return result;
   }
@@ -67,5 +64,4 @@ export class BoardResolver {
     const result = this.boardService.delete({ number });
     return result;
   }
-  
 }

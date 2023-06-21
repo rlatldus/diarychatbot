@@ -7,6 +7,9 @@ import { getUser } from '../../api/user';
 export const useSignIn = (setIsLoading, reset, navigate) => {
     return useMutation(signIn, {
         onSuccess: async (response) => {
+            if (response?.data?.errors) {
+                return toast.error(`${response.data.errors[0].message}`);
+            }
             userStorage.set(response.data.data.login);
 
             const {
