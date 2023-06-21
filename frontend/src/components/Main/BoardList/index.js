@@ -2,11 +2,11 @@ import React from 'react';
 import * as Styled from './style';
 import { Link } from 'react-router-dom';
 
-const BoardList = ({ createDate, daysOfWeek, id, title, desc, stickerColor }) => {
+const BoardList = ({ createDate, daysOfWeek, id, title, desc, color }) => {
     return (
-        <Link to={`/{링크}/${id}`}>
+        <Link to={`/Board/${id}`}>
             <Styled.BoardCard>
-                <Styled.Sticker small stickerColor={stickerColor} />
+                <Styled.Sticker small color={color} />
                 <Styled.BoardTitleWrapper>
                     <Styled.BoardTitlePin />
                     <Styled.BoardTitle>{title}</Styled.BoardTitle>

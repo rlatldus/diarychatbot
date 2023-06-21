@@ -6,7 +6,7 @@ export const getDiary = async () => {
             id
             title
             ask
-            sticker_color
+            color
             answer
             score
             user {

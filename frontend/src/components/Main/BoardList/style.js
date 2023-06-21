@@ -3,11 +3,15 @@ import { StickerAlign } from '../../@shared/Sticker/style';
 
 export const BoardCard = styled.div`
     position: relative;
-    max-width: 25rem;
+    width: 25rem;
     height: 35rem;
     padding: 5rem 3rem;
     background-color: #fff;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     box-shadow: 0.4rem 0.4rem 1rem rgba(0, 0, 0, 0.25);
+    &:hover {
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25), 0 1rem 1rem rgba(0, 0, 0, 0.22);
+    }
 `;
 
 export const Sticker = styled(StickerAlign)`

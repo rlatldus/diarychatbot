@@ -3,11 +3,11 @@ import { getUserToken } from '../util/auth';
 import { userStorage } from '../util/userStorage';
 import { getToken } from './auth';
 
-export const instance = axios.create({
-    baseURL: 'https://jintakim.shop/graphql',
+export const socialInstance = axios.create({
+    baseURL: 'https://jintakim.shop/',
 });
 
-instance.interceptors.request.use(
+socialInstance.interceptors.request.use(
     (config) => {
         const token = getUserToken();
         config.headers.Authorization = `Bearer ${token}`;
@@ -18,7 +18,7 @@ instance.interceptors.request.use(
     },
 );
 
-instance.interceptors.response.use(async (response) => {
+socialInstance.interceptors.response.use(async (response) => {
     const { config } = response;
     if (response?.data?.errors?.[0]?.message === 'Unauthorized') {
         const originalRequest = config;

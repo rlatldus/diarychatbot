@@ -10,7 +10,7 @@ const MainBodyFooter = () => {
     const { mutate: Logout } = useLogout(navigate);
     return (
         <Styled.ButtonWrapper>
-            <Button small primary>
+            <Button type="button" small primary onClick={() => navigate(`/Board/1`)}>
                 글쓰기
             </Button>
             <Button type="button" small onClick={Logout}>

@@ -5,6 +5,7 @@ import Board from './pages/Board';
 import Main from './pages/Main';
 import ToasterProvider from './providers/ToasterProvider';
 import { checkAuthLoader } from './util/auth';
+import SocialLoginToken from './pages/SocialLoginToken';
 
 const router = createBrowserRouter([
     {
@@ -17,7 +18,11 @@ const router = createBrowserRouter([
                 element: <Main />,
                 loader: checkAuthLoader,
             },
-            { path: 'board', element: <Board /> },
+            { path: 'Board/:id', element: <Board /> },
+            {
+                path: 'loginRedirect/:userId',
+                element: <SocialLoginToken />,
+            },
         ],
     },
 ]);

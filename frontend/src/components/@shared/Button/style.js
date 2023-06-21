@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import googleIMG from '../../../assets/google.jpg';
-import kakaoIMG from '../../../assets/kakao.jpg';
-import naverIMG from '../../../assets/naver.jpg';
+import googleIMG from '../../../assets/google.png';
+import kakaoIMG from '../../../assets/kakao.png';
+import naverIMG from '../../../assets/naver.png';
 
 export const ButtonBg = styled.div`
     padding: 1rem;
@@ -17,6 +17,14 @@ export const ButtonShadow = styled.div`
 `;
 
 export const ButtonCont = styled.button`
+    position: absolute;
+    width: ${(props) => (props.small ? '30rem' : '40rem')};
+    height: 4.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border-radius: 2.4rem;
+    padding-left: ${(props) => (props.google || props.naver || props.kakao) && '40px'};
+    cursor: pointer;
     background-color: ${(props) =>
         props.primary
             ? '#FF7549'
@@ -36,8 +44,6 @@ export const ButtonCont = styled.button`
             : props.naver
             ? '1px solid #3F9324'
             : '2px solid #FF7549'};
-    position: absolute;
-    width: ${(props) => (props.small ? '30rem' : '40rem')};
     background-image: ${(props) =>
         props.google
             ? `url(${googleIMG})`
@@ -49,14 +55,30 @@ export const ButtonCont = styled.button`
     background-repeat: no-repeat;
     background-position: 10rem center;
     background-size: 7%;
-    height: 4.5rem;
     box-shadow: 0.7rem 0.7rem 0.7rem rgba(80, 29, 0, 0.16);
-    font-size: 1.6rem;
-    font-weight: 600;
-    border-radius: 2.4rem;
-    padding-left: ${(props) => (props.google || props.naver || props.kakao) && '40px'};
-    cursor: pointer;
-
+    &:active {
+        background-color: ${(props) =>
+            props.primary
+                ? '#e74813'
+                : props.google
+                ? '#980a05'
+                : props.kakao
+                ? '#ddba1f'
+                : props.naver
+                ? '#169500'
+                : '#e4ded0'};
+        background-image: ${(props) =>
+            props.google
+                ? `url(${googleIMG})`
+                : props.kakao
+                ? `url(${kakaoIMG})`
+                : props.naver
+                ? `url(${naverIMG})`
+                : 'none'};
+        background-repeat: no-repeat;
+        background-position: 10rem center;
+        background-size: 7%;
+    }
     &:disabled {
         cursor: not-allowed;
         background-color: #e0e0e0;
