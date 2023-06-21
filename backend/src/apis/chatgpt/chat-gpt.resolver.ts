@@ -36,11 +36,23 @@ export class ChatGPTResolver {
     async fetchMyDiary(@CurrentUser() currentUser: ICurrentUser) {
         return await this.chatGPTService.findMyDiary({ user: currentUser });
     }
+    @UseGuards(GqlAuthAccessGuard)
+    @Query(() => [ChatGPT])
+    async fetchMyDiaryACS(@CurrentUser() currentUser: ICurrentUser) {
+        return await this.chatGPTService.findMyDiaryACS({ user: currentUser });
+    }
 
     @UseGuards(GqlAuthAccessGuard)
     @Query(() => [ChatGPT])
     async fetchMyDiaryUpdate(@CurrentUser() currentUser: ICurrentUser) {
         return await this.chatGPTService.findMyDiaryUpdate({
+            user: currentUser,
+        });
+    }
+    @UseGuards(GqlAuthAccessGuard)
+    @Query(() => [ChatGPT])
+    async fetchMyDiaryUpdateACS(@CurrentUser() currentUser: ICurrentUser) {
+        return await this.chatGPTService.findMyDiaryUpdateACS({
             user: currentUser,
         });
     }
