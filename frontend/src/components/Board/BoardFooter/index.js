@@ -5,9 +5,8 @@ import { useDeleteDiary } from '../../../hooks/@query/useDeleteDiary';
 import { useUpdateDiary } from '../../../hooks/@query/useUpdateDiary';
 import Button from '../../@shared/Button';
 import * as Styled from './style';
-const BoardFooter = ({ formData, isBoardURL, setFormData }) => {
+const BoardFooter = ({ formData, isBoardURL, setFormData, setIsLoading }) => {
     const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
     const [isAvailable, setIsAvailable] = useState(false);
     const { mutate: updateMyDiary } = useUpdateDiary(setIsLoading);
     const { mutate: deleteMyDiary } = useDeleteDiary(setIsLoading, navigate);

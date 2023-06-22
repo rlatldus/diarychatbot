@@ -5,6 +5,7 @@ import DairyMemo from '../DairyMemo';
 import * as Styled from './style';
 
 const BoardBody = ({ fetchMyDiary }) => {
+    const [isLoading, setIsLoading] = useState(false);
     const currentURL = window.location.href;
     const isBoardURL = currentURL.endsWith('/Board/1');
     const id = currentURL.split('/').pop();
@@ -44,9 +45,14 @@ const BoardBody = ({ fetchMyDiary }) => {
                     setFormData={setFormData}
                     fetchMyDiary={fetchMyDiary}
                 />
-                <AiMemo formData={formData} setFormData={setFormData} />
+                <AiMemo formData={formData} setFormData={setFormData} isLoading={isLoading} />
             </Styled.BoardBodyBg>
-            <BoardFooter formData={formData} setFormData={setFormData} isBoardURL={isBoardURL} />
+            <BoardFooter
+                formData={formData}
+                setFormData={setFormData}
+                isBoardURL={isBoardURL}
+                setIsLoading={setIsLoading}
+            />
         </>
     );
 };
