@@ -8,10 +8,9 @@ import * as Styled from './style';
 const BoardFooter = ({ formData, isBoardURL, setFormData, setIsLoading }) => {
     const navigate = useNavigate();
     const [isAvailable, setIsAvailable] = useState(false);
-    const { mutate: updateMyDiary } = useUpdateDiary(setIsLoading);
     const { mutate: deleteMyDiary } = useDeleteDiary(setIsLoading, navigate);
-    const { mutate: createMyDiary } = useCreateDiary(setIsLoading, setFormData);
     const createDiaryMutation = useCreateDiary(setIsLoading);
+    const UpdateMyDiaryMutation = useUpdateDiary(setIsLoading);
 
     const CreateDiary = async () => {
         setIsLoading(true);
@@ -19,14 +18,10 @@ const BoardFooter = ({ formData, isBoardURL, setFormData, setIsLoading }) => {
         setFormData(response.data.data.createDiary);
     };
 
-    const UpdateMyDiary = () => {
+    const UpdateMyDiary = async () => {
         setIsLoading(true);
-        updateMyDiary({
-            id: formData.id,
-            title: formData.title,
-            ask: formData.ask,
-            color: formData.color,
-        });
+        const response = await UpdateMyDiaryMutation.mutateAsync(formData);
+        setFormData(response.data.data.updateMyDiary);
     };
 
     const DeleteMyDiary = () => {
