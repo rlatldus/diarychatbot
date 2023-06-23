@@ -37,7 +37,7 @@ const DairyMemo = ({ formData, setFormData, updatedAt }) => {
     return (
         <Memo>
             <Styled.Date>
-                {formData.updatedAt
+                {formData.createdAt && formData.updatedAt
                     ? (() => {
                           const updatedate = new Date(formData[updatedAt]);
                           const updatedayOfWeek = updatedate.getUTCDay();
