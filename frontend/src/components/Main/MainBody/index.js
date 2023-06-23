@@ -12,13 +12,14 @@ const MainBody = () => {
     const [select, setSelect] = useState('');
 
     useEffect(() => {
-        if (select === '옛날') {
-            setFetchDiary('fetchMyDiaryUpdateACS');
-        } else if (select === '최신') {
+        if (select === '최근 생성일 순') {
             setFetchDiary('fetchMyDiary');
-            //  else if (text === '업데이트순') {
-            //     setFetchDiary('fetchMyDiaryUpdate');
-            // }
+        } else if (select === '오래된 순') {
+            setFetchDiary('fetchMyDiaryUpdateACS');
+        } else if (select === '최근 수정일 순') {
+            setFetchDiary('fetchMyDiaryUpdate');
+        } else if (select === '최초 생성일 순') {
+            setFetchDiary('fetchMyDiaryACS');
         }
     }, [select]);
 
@@ -29,9 +30,10 @@ const MainBody = () => {
     const {
         data: {
             data: {
-                fetchMyDiaryUpdateACS: fetchMyDiarysUpdateACS,
                 fetchMyDiary: fetchMyDiarys,
-                // fetchMyDiaryUpdate: fetchMyDiarysUpdate,
+                fetchMyDiaryUpdateACS: fetchMyDiarysUpdateACS,
+                fetchMyDiaryUpdate: fetchMyDiarysUpdate,
+                fetchMyDiaryACS: fetchMyDiarysACS,
             },
         },
     } = diaryData;
@@ -39,14 +41,28 @@ const MainBody = () => {
     return (
         <Styled.ContentWrapper>
             <Styled.SelectWrapper>
-                <Select options={['옛날', '최신']} select={select} setSelect={setSelect} />
+                <Select
+                    options={['최근 생성일 순', '오래된 순', '최근 수정일 순', '최초 생성일 순']}
+                    select={select}
+                    setSelect={setSelect}
+                />
             </Styled.SelectWrapper>
             <BoardLists
                 fetchMyDiary={
-                    fetchDiary === 'fetchMyDiaryUpdateACS' ? fetchMyDiarysUpdateACS : fetchMyDiarys
-                    // (fetchDiary === 'fetchMyDiaryUpdate' && fetchMyDiarysUpdate)
+                    (fetchDiary === 'fetchMyDiary' && fetchMyDiarys) ||
+                    (fetchDiary === 'fetchMyDiaryUpdateACS' && fetchMyDiarysUpdateACS) ||
+                    (fetchDiary === 'fetchMyDiaryUpdate' && fetchMyDiarysUpdate) ||
+                    (fetchDiary === 'fetchMyDiaryACS' && fetchMyDiarysACS)
+                }
+                updatedAt={
+                    ((fetchDiary === 'fetchMyDiaryUpdateACS' ||
+                        fetchDiary === 'fetchMyDiaryUpdate') &&
+                        'updatedAt') ||
+                    ((fetchDiary === 'fetchMyDiary' || fetchDiary === 'fetchMyDiaryACS') &&
+                        'createdAt')
                 }
             />
+
             <MainBodyFooter />
         </Styled.ContentWrapper>
     );
