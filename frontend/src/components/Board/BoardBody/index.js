@@ -40,12 +40,8 @@ const BoardBody = ({ fetchMyDiary }) => {
         <>
             <Styled.GlobalStyle backgroundColor={getBackgroundColor(formData.score)} />
             <Styled.BoardBodyBg>
-                <DairyMemo
-                    formData={formData}
-                    setFormData={setFormData}
-                    fetchMyDiary={fetchMyDiary}
-                />
-                <AiMemo formData={formData} setFormData={setFormData} isLoading={isLoading} />
+                <DairyMemo formData={formData} setFormData={setFormData} />
+                <AiMemo formData={formData} isLoading={isLoading} />
             </Styled.BoardBodyBg>
             <BoardFooter
                 formData={formData}
