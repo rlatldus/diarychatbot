@@ -14,8 +14,6 @@
     border: none;
     outline: none;
     -webkit-tap-highlight-color: transparent;
-    background-image: url(../../assets/logo.svg);
-    background-position: -1rem left;
 }
 
 html {
