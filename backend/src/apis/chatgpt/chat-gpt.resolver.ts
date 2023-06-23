@@ -36,6 +36,26 @@ export class ChatGPTResolver {
     async fetchMyDiary(@CurrentUser() currentUser: ICurrentUser) {
         return await this.chatGPTService.findMyDiary({ user: currentUser });
     }
+    @UseGuards(GqlAuthAccessGuard)
+    @Query(() => [ChatGPT])
+    async fetchMyDiaryACS(@CurrentUser() currentUser: ICurrentUser) {
+        return await this.chatGPTService.findMyDiaryACS({ user: currentUser });
+    }
+
+    @UseGuards(GqlAuthAccessGuard)
+    @Query(() => [ChatGPT])
+    async fetchMyDiaryUpdate(@CurrentUser() currentUser: ICurrentUser) {
+        return await this.chatGPTService.findMyDiaryUpdate({
+            user: currentUser,
+        });
+    }
+    @UseGuards(GqlAuthAccessGuard)
+    @Query(() => [ChatGPT])
+    async fetchMyDiaryUpdateACS(@CurrentUser() currentUser: ICurrentUser) {
+        return await this.chatGPTService.findMyDiaryUpdateACS({
+            user: currentUser,
+        });
+    }
     // 특정 일기 조회 로그인 되어있는 유저의 일기만 조회
     @UseGuards(GqlAuthAccessGuard)
     @Query(() => ChatGPT)

@@ -63,6 +63,9 @@ type Query {
   fetchUser: User!
   findOneByEmail(email: String!): User!
   fetchMyDiary: [ChatGPT!]!
+  fetchMyDiaryACS: [ChatGPT!]!
+  fetchMyDiaryUpdate: [ChatGPT!]!
+  fetchMyDiaryUpdateACS: [ChatGPT!]!
   fetchMyDiaryOne(id: String!): ChatGPT!
 }
 

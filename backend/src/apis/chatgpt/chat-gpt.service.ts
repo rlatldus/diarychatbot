@@ -23,6 +23,29 @@ export class ChatGPTService {
             order: { createdAt: 'DESC' },
         });
     }
+    async findMyDiaryACS({ user }) {
+        return await this.ChatGPTRepository.find({
+            where: { user: user },
+            relations: ['user'],
+            order: { createdAt: 'ASC' },
+        });
+    }
+    async findMyDiaryUpdate({ user }) {
+        return await this.ChatGPTRepository.find({
+            where: { user: user },
+            relations: ['user'],
+            order: { updatedAt: 'DESC' },
+        });
+    }
+    async findMyDiaryUpdateACS({ user }) {
+        return await this.ChatGPTRepository.find({
+            where: { user: user },
+            relations: ['user'],
+            order: { updatedAt: 'ASC' },
+        });
+    }
+
+    //
     // 아이디로 일기 찾기
     async findMyDiaryOne({ user, id }) {
         return await this.ChatGPTRepository.findOne({
