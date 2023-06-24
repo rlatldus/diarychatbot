@@ -12,7 +12,7 @@ const AiMemo = ({ formData, isLoading }) => {
                 <>
                     <Styled.Cont></Styled.Cont>
                     <Styled.ScoreBg>
-                        일기를 평가하는 <TypingEffect text={'중 입니다..'} />
+                        읽기짱 봇이 일기 읽는 <TypingEffect text={'중 입니다..'} />
                     </Styled.ScoreBg>
                 </>
             ) : (
@@ -21,7 +21,7 @@ const AiMemo = ({ formData, isLoading }) => {
                         <TypingEffect text={formData.answer} />
                     </Styled.Cont>
                     {formData.score == null ? (
-                        <Styled.ScoreBg>제가 오늘의 일기를 평가해드릴게요</Styled.ScoreBg>
+                        <Styled.ScoreBg>읽기짱 봇이 조언과 응원을 해드릴게요</Styled.ScoreBg>
                     ) : (
                         <Styled.ScoreBg>
                             <Styled.Score>{formData.score}점</Styled.Score>

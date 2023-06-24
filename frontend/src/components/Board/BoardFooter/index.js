@@ -8,25 +8,28 @@ import * as Styled from './style';
 const BoardFooter = ({ formData, isBoardURL, setFormData, setIsLoading }) => {
     const navigate = useNavigate();
     const [isAvailable, setIsAvailable] = useState(false);
-    const { mutate: updateMyDiary } = useUpdateDiary(setIsLoading);
     const { mutate: deleteMyDiary } = useDeleteDiary(setIsLoading, navigate);
-    const { mutate: createMyDiary } = useCreateDiary(setIsLoading, setFormData);
     const createDiaryMutation = useCreateDiary(setIsLoading);
+    const UpdateMyDiaryMutation = useUpdateDiary(setIsLoading);
 
     const CreateDiary = async () => {
         setIsLoading(true);
         const response = await createDiaryMutation.mutateAsync(formData);
-        setFormData(response.data.data.createDiary);
+        if (response.data.errors == null) {
+            setFormData(response.data.data.createDiary);
+        } else {
+            alert('길이가 너무 길어서 작성이 어려워요');
+        }
     };
 
-    const UpdateMyDiary = () => {
+    const UpdateMyDiary = async () => {
         setIsLoading(true);
-        updateMyDiary({
-            id: formData.id,
-            title: formData.title,
-            ask: formData.ask,
-            color: formData.color,
-        });
+        const response = await UpdateMyDiaryMutation.mutateAsync(formData);
+        if (response.data.errors == null) {
+            setFormData(response.data.data.updateMyDiary);
+        } else {
+            alert('길이가 너무 길어서 수정이 어려워요');
+        }
     };
 
     const DeleteMyDiary = () => {

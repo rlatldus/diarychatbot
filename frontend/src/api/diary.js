@@ -1,8 +1,8 @@
 import { instance } from '.';
 
-export const getDiary = async () => {
+export const getDiary = async (fetchDiary) => {
     const response = await instance.post('', {
-        query: `query{fetchMyDiary{
+        query: `query{${fetchDiary}{
             id
             title
             ask
