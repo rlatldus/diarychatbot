@@ -11,17 +11,18 @@ const MainBody = () => {
     const { isLoading: diaryLoading, data: diaryData } = useGetDiary(fetchDiary);
     const [select, setSelect] = useState('');
 
-    useEffect(() => {
-        if (select === '최근 생성일 순') {
-            setFetchDiary('fetchMyDiary');
-        } else if (select === '오래된 순') {
-            setFetchDiary('fetchMyDiaryUpdateACS');
-        } else if (select === '최근 수정일 순') {
-            setFetchDiary('fetchMyDiaryUpdate');
-        } else if (select === '최초 생성일 순') {
-            setFetchDiary('fetchMyDiaryACS');
-        }
-    }, [select]);
+    // 이전 코드
+    // useEffect(() => {
+    //     if (select === '최근 생성일 순') {
+    //         setFetchDiary('fetchMyDiary');
+    //     } else if (select === '오래된 순') {
+    //         setFetchDiary('fetchMyDiaryUpdateACS');
+    //     } else if (select === '최근 수정일 순') {
+    //         setFetchDiary('fetchMyDiaryUpdate');
+    //     } else if (select === '최초 생성일 순') {
+    //         setFetchDiary('fetchMyDiaryACS');
+    //     }
+    // }, [select]);
 
     if (diaryLoading) {
         return <Loading />;
@@ -43,24 +44,41 @@ const MainBody = () => {
             <Styled.SelectWrapper>
                 <Select
                     options={['최근 생성일 순', '오래된 순', '최근 수정일 순', '최초 생성일 순']}
+                    dataValue={[
+                        'fetchMyDiary',
+                        'fetchMyDiaryUpdateACS',
+                        'fetchMyDiaryUpdate',
+                        'fetchMyDiaryACS',
+                    ]}
                     select={select}
                     setSelect={setSelect}
+                    setFetchDiary={setFetchDiary}
                 />
             </Styled.SelectWrapper>
             <BoardLists
                 fetchMyDiary={
-                    (fetchDiary === 'fetchMyDiary' && fetchMyDiarys) ||
-                    (fetchDiary === 'fetchMyDiaryUpdateACS' && fetchMyDiarysUpdateACS) ||
-                    (fetchDiary === 'fetchMyDiaryUpdate' && fetchMyDiarysUpdate) ||
-                    (fetchDiary === 'fetchMyDiaryACS' && fetchMyDiarysACS)
+                    fetchMyDiarys ||
+                    fetchMyDiarysUpdateACS ||
+                    fetchMyDiarysUpdate ||
+                    fetchMyDiarysACS
                 }
-                updatedAt={
-                    ((fetchDiary === 'fetchMyDiaryUpdateACS' ||
-                        fetchDiary === 'fetchMyDiaryUpdate') &&
-                        'updatedAt') ||
-                    ((fetchDiary === 'fetchMyDiary' || fetchDiary === 'fetchMyDiaryACS') &&
-                        'createdAt')
-                }
+                updatedAt={(fetchMyDiarysUpdateACS || fetchMyDiarysUpdate) && 'updatedAt'}
+                createdAt={(fetchMyDiarys || fetchMyDiarysACS) && 'createdAt'}
+
+                // 이전 코드
+                // fetchMyDiary={
+                //     (fetchDiary === 'fetchMyDiary' && fetchMyDiarys) ||
+                //     (fetchDiary === 'fetchMyDiaryUpdateACS' && fetchMyDiarysUpdateACS) ||
+                //     (fetchDiary === 'fetchMyDiaryUpdate' && fetchMyDiarysUpdate) ||
+                //     (fetchDiary === 'fetchMyDiaryACS' && fetchMyDiarysACS)
+                // }
+                // updatedAt={
+                //     // ((fetchDiary === 'fetchMyDiaryUpdateACS' ||
+                //     //     fetchDiary === 'fetchMyDiaryUpdate') &&
+                //     //     'updatedAt') ||
+                //     // ((fetchDiary === 'fetchMyDiary' || fetchDiary === 'fetchMyDiaryACS') &&
+                //     //     'createdAt')
+                // }
             />
 
             <MainBodyFooter />

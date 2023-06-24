@@ -2,11 +2,12 @@ import React from 'react';
 import * as Styled from './style';
 import BoardList from '../BoardList';
 
-const BoardLists = ({ fetchMyDiary, updatedAt }) => {
+/*  추가한 props 코드 createdAt*/
+const BoardLists = ({ fetchMyDiary, updatedAt, createdAt }) => {
     return (
         <Styled.BoardWrapper>
             {fetchMyDiary?.map((diary) => {
-                const date = new Date(diary[updatedAt]);
+                const date = new Date(diary[updatedAt || createdAt]); /* 추가 */
                 const dayOfWeek = date.getDay();
                 const dateForm = date.toISOString().split('T')[0].split('-');
                 const daysOfWeek = [
@@ -28,6 +29,7 @@ const BoardLists = ({ fetchMyDiary, updatedAt }) => {
                         title={diary.title}
                         desc={diary.ask}
                         color={diary.color}
+                        updatedAt={updatedAt}
                     />
                 );
             })}
