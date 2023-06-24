@@ -3,6 +3,7 @@
     src: url(./assets/fonts/Noto_Serif_KR/NotoSerifKR-Medium.otf);
 }
 
+
 :root {
     --font-notoSerifKR: 'notoSerifKR';
 }
