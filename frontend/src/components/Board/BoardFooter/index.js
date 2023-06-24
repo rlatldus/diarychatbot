@@ -15,13 +15,21 @@ const BoardFooter = ({ formData, isBoardURL, setFormData, setIsLoading }) => {
     const CreateDiary = async () => {
         setIsLoading(true);
         const response = await createDiaryMutation.mutateAsync(formData);
-        setFormData(response.data.data.createDiary);
+        if (response.data.errors == null) {
+            setFormData(response.data.data.createDiary);
+        } else {
+            alert('길이가 너무 길어서 작성이 어려워요');
+        }
     };
 
     const UpdateMyDiary = async () => {
         setIsLoading(true);
         const response = await UpdateMyDiaryMutation.mutateAsync(formData);
-        setFormData(response.data.data.updateMyDiary);
+        if (response.data.errors == null) {
+            setFormData(response.data.data.updateMyDiary);
+        } else {
+            alert('길이가 너무 길어서 수정이 어려워요');
+        }
     };
 
     const DeleteMyDiary = () => {
