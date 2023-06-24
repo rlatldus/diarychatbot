@@ -35,7 +35,7 @@ import { ChatGPTModule } from './apis/chatgpt/chat-gpt.module';
             password: process.env.DB_PASSWORD,
             database: process.env.DB_DATABASE,
             entities: [__dirname + '/apis/**/*.entity.*'],
-            timezone: '+09:00',
+            timezone: 'Asia/Seoul',
             synchronize: true,
             logging: true,
         }),
