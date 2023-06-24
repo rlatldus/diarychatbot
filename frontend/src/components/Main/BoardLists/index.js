@@ -2,14 +2,13 @@ import React from 'react';
 import * as Styled from './style';
 import BoardList from '../BoardList';
 
-const BoardLists = ({ fetchMyDiary }) => {
+const BoardLists = ({ fetchMyDiary, updatedAt }) => {
     return (
         <Styled.BoardWrapper>
             {fetchMyDiary?.map((diary) => {
-                const date = new Date(diary.createdAt);
+                const date = new Date(diary[updatedAt]);
                 const dayOfWeek = date.getDay();
                 const dateForm = date.toISOString().split('T')[0].split('-');
-
                 const daysOfWeek = [
                     '일요일',
                     '월요일',

@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 
 export const ButtonWrapper = styled.div`
-    display: flex;
-    margin-top: 10rem;
-    margin-bottom: 11rem;
+    margin: 0 auto;
+    padding: 4rem 0;
+    max-width: 32rem;
+    width: 100%;
+    @media (min-width: 65rem) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `;

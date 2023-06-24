@@ -4,7 +4,8 @@ import BoardFooter from '../BoardFooter';
 import DairyMemo from '../DairyMemo';
 import * as Styled from './style';
 
-const BoardBody = ({ fetchMyDiary }) => {
+const BoardBody = ({ fetchMyDiary, updatedAt }) => {
+    const [isLoading, setIsLoading] = useState(false);
     const currentURL = window.location.href;
     const isBoardURL = currentURL.endsWith('/Board/1');
     const id = currentURL.split('/').pop();
@@ -19,11 +20,13 @@ const BoardBody = ({ fetchMyDiary }) => {
     });
 
     useEffect(() => {
-        if (fetchMyDiary.length > 0 && !isBoardURL) {
+        if (fetchMyDiary) {
             const foundDiary = fetchMyDiary.find((diary) => diary.id === id);
-            setFormData(foundDiary);
+            if (foundDiary) {
+                setFormData(foundDiary);
+            }
         }
-    }, [fetchMyDiary, id, isBoardURL]);
+    }, [fetchMyDiary, id]);
 
     const getBackgroundColor = (score) => {
         if (score > 70) {
@@ -39,14 +42,15 @@ const BoardBody = ({ fetchMyDiary }) => {
         <>
             <Styled.GlobalStyle backgroundColor={getBackgroundColor(formData.score)} />
             <Styled.BoardBodyBg>
-                <DairyMemo
-                    formData={formData}
-                    setFormData={setFormData}
-                    fetchMyDiary={fetchMyDiary}
-                />
-                <AiMemo formData={formData} setFormData={setFormData} />
+                <DairyMemo formData={formData} setFormData={setFormData} updatedAt={updatedAt} />
+                <AiMemo formData={formData} isLoading={isLoading} />
             </Styled.BoardBodyBg>
-            <BoardFooter formData={formData} setFormData={setFormData} isBoardURL={isBoardURL} />
+            <BoardFooter
+                formData={formData}
+                setFormData={setFormData}
+                isBoardURL={isBoardURL}
+                setIsLoading={setIsLoading}
+            />
         </>
     );
 };

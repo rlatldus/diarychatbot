@@ -5,23 +5,34 @@ import sad from './../../../assets/sad.png';
 import smile from './../../../assets/smile.png';
 import * as Styled from './style';
 
-const AiMemo = ({ formData }) => {
+const AiMemo = ({ formData, isLoading }) => {
     return (
         <Memo>
-            <Styled.Cont>
-                <TypingEffect text={formData.answer} />
-            </Styled.Cont>
-            {formData.score == null ? (
-                <Styled.ScoreBg>제가 오늘의 일기를 평가해드릴게요</Styled.ScoreBg>
+            {isLoading ? (
+                <>
+                    <Styled.Cont></Styled.Cont>
+                    <Styled.ScoreBg>
+                        읽기짱 봇이 일기 읽는 <TypingEffect text={'중 입니다..'} />
+                    </Styled.ScoreBg>
+                </>
             ) : (
-                <Styled.ScoreBg>
-                    <Styled.Score>{formData.score}점</Styled.Score>
-                    {formData.score > 70 && <Styled.Icon src={smile} alt="" />}
-                    {formData.score <= 70 && formData.score >= 30 && (
-                        <Styled.Icon src={happy} alt="" />
+                <>
+                    <Styled.Cont>
+                        <TypingEffect text={formData.answer} />
+                    </Styled.Cont>
+                    {formData.score == null ? (
+                        <Styled.ScoreBg>읽기짱 봇이 조언과 응원을 해드릴게요</Styled.ScoreBg>
+                    ) : (
+                        <Styled.ScoreBg>
+                            <Styled.Score>{formData.score}점</Styled.Score>
+                            {formData.score > 70 && <Styled.Icon src={smile} alt="" />}
+                            {formData.score <= 70 && formData.score >= 30 && (
+                                <Styled.Icon src={happy} alt="" />
+                            )}
+                            {formData.score < 30 && <Styled.Icon src={sad} alt="" />}
+                        </Styled.ScoreBg>
                     )}
-                    {formData.score < 30 && <Styled.Icon src={sad} alt="" />}
-                </Styled.ScoreBg>
+                </>
             )}
         </Memo>
     );

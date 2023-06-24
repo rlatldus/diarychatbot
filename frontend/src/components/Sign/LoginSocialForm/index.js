@@ -1,31 +1,26 @@
-import { useSocialSignIn } from '../../../hooks/@query/useSocialSignIn';
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '../../@shared/Button';
 
 import * as Styled from './style';
-import { useNavigate } from 'react-router-dom';
 
 const LoginSocialForm = () => {
-    const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
-    const { mutate: SocialSignIn } = useSocialSignIn(setIsLoading, navigate);
-
-    const onSubmit = (socialName) => {
-        setIsLoading(true);
-        SocialSignIn(socialName);
-    };
-
     return (
         <Styled.StyleForm>
-            <Button disabled={isLoading} onClick={() => onSubmit('google')} google>
-                google로 로그인
-            </Button>
-            <Button disabled={isLoading} onClick={() => onSubmit('kakao')} kakao>
-                카카오계정으로 로그인
-            </Button>
-            <Button disabled={isLoading} onClick={() => onSubmit('naver')} naver>
-                네이버 아이디로 로그인
-            </Button>
+            <a href="https://jintakim.shop/login/google">
+                <Button type="button" google>
+                    google로 로그인
+                </Button>
+            </a>
+            <a href="https://jintakim.shop/login/kakao">
+                <Button type="button" kakao>
+                    카카오계정으로 로그인
+                </Button>
+            </a>
+            <a href="https://jintakim.shop/login/naver">
+                <Button type="button" naver>
+                    네이버 아이디로 로그인
+                </Button>
+            </a>
         </Styled.StyleForm>
     );
 };

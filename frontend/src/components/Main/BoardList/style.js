@@ -9,6 +9,10 @@ export const BoardCard = styled.div`
     background-color: #fff;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     box-shadow: 0.4rem 0.4rem 1rem rgba(0, 0, 0, 0.25);
+    @media (max-width: 560px) {
+        width: 15rem;
+        height: 25rem;
+    }
     &:hover {
         box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25), 0 1rem 1rem rgba(0, 0, 0, 0.22);
     }
@@ -53,6 +57,9 @@ export const BoardDesc = styled.p`
     padding-right: 0.1rem;
     font-size: 1.4rem;
     word-break: break-all;
+    @media (max-width: 560px) {
+        -webkit-line-clamp: 5;
+    }
 `;
 export const BoardDate = styled.div`
     position: absolute;

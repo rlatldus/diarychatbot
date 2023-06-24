@@ -20,7 +20,7 @@ const router = createBrowserRouter([
             },
             { path: 'Board/:id', element: <Board /> },
             {
-                path: 'loginRedirect/:userId',
+                path: 'loadingAuth/:userId',
                 element: <SocialLoginToken />,
             },
         ],
