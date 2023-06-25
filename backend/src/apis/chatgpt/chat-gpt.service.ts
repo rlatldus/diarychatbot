@@ -161,9 +161,7 @@ export class ChatGPTService {
         if (findId == null) {
             throw new BadRequestException('해당하는 일기가 없습니다.');
         }
-        console.log(updateChatInput);
         const { ask, title, color } = updateChatInput;
-        console.log(ask);
         if (ask == findId.ask) {
             const saveData = {
                 ...findId,
