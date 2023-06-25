@@ -161,8 +161,20 @@ export class ChatGPTService {
         if (findId == null) {
             throw new BadRequestException('해당하는 일기가 없습니다.');
         }
-
+        console.log(updateChatInput);
         const { ask, title, color } = updateChatInput;
+        console.log(ask);
+        if (ask == '') {
+            const saveData = {
+                ...findId,
+                ask: ask,
+                title: title,
+                color: color,
+                user: { id: user.id },
+            };
+            const result = await this.ChatGPTRepository.save(saveData);
+            return result;
+        }
         const response = await this.chatgptAxios({
             createChatInput: { ask },
             user,
