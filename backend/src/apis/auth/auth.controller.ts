@@ -18,19 +18,18 @@ export class AuthController {
     @Get('/login/google')
     @UseGuards(AuthGuard('google'))
     async loginGoogle(@Req() req: Request & IOauthUser, @Res() res: Response) {
-        // console.log(req.user);
-        this.authService.loginOauth({ req, res });
+        return await this.authService.loginOauth({ req, res });
     }
 
     @Get('/login/naver')
     @UseGuards(AuthGuard('naver'))
     async loginNaver(@Req() req: Request & IOauthUser, @Res() res: Response) {
-        this.authService.loginOauth({ req, res });
+        return await this.authService.loginOauth({ req, res });
     }
 
     @Get('/login/kakao')
     @UseGuards(AuthGuard('kakao'))
     async loginKakao(@Req() req: Request & IOauthUser, @Res() res: Response) {
-        this.authService.loginOauth({ req, res });
+        return await this.authService.loginOauth({ req, res });
     }
 }
