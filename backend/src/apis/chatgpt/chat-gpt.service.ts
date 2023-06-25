@@ -164,7 +164,7 @@ export class ChatGPTService {
         console.log(updateChatInput);
         const { ask, title, color } = updateChatInput;
         console.log(ask);
-        if (ask == '') {
+        if (ask == findId.ask) {
             const saveData = {
                 ...findId,
                 ask: ask,
