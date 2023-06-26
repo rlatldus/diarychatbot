@@ -1,11 +1,15 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Board from './pages/Board';
-import Main from './pages/Main';
 import ToasterProvider from './providers/ToasterProvider';
+
 import { checkAuthLoader } from './util/auth';
+
+import MainLayout from './components/Main/MainLayout';
+import BoardRootLayout from './components/Board/BoardRootLayout';
 import SocialLoginToken from './pages/SocialLoginToken';
+import Main from './pages/Main';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Board from './pages/Board';
 
 const router = createBrowserRouter([
     {
@@ -15,10 +19,23 @@ const router = createBrowserRouter([
             { path: 'regist', element: <Register /> },
             {
                 path: 'main/:userId',
-                element: <Main />,
+                element: <MainLayout />,
                 loader: checkAuthLoader,
+                children: [
+                    {
+                        index: true,
+                        element: <Main />,
+                    },
+                    {
+                        path: 'Board',
+                        element: <BoardRootLayout />,
+                        children: [
+                            { index: true, element: <Board /> },
+                            { path: ':boardId', element: <Board /> },
+                        ],
+                    },
+                ],
             },
-            { path: 'Board/:id', element: <Board /> },
             {
                 path: 'loadingAuth/:userId',
                 element: <SocialLoginToken />,
