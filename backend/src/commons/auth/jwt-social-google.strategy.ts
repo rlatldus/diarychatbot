@@ -20,7 +20,7 @@ export class JwtGoogleStrategy extends PassportStrategy(Strategy, 'google') {
         console.log(profile);
         return {
             email: profile.emails[0].value,
-            password: profile.id,
+            password: `${profile.id}`,
             name: profile.displayName,
         };
     }
