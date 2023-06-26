@@ -1,8 +1,9 @@
-import React from 'react';
-import * as Styled from './style';
-import Button from '../../@shared/Button';
 import { useNavigate } from 'react-router-dom';
 import { useLogout } from '../../../hooks/@query/useLogout';
+
+import Button from '../../@shared/Button';
+
+import * as Styled from './style';
 
 const MainBodyFooter = () => {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ const MainBodyFooter = () => {
     const { mutate: Logout } = useLogout(navigate);
     return (
         <Styled.ButtonWrapper>
-            <Button type="button" small primary onClick={() => navigate(`/Board/1`)}>
+            <Button type="button" small primary onClick={() => navigate('Board')}>
                 글쓰기
             </Button>
             <Button type="button" small onClick={Logout}>
