@@ -25,7 +25,6 @@ const DairyMemo = ({ register, setValue, updatedAt, foundDiaryData }) => {
         setValue(name, value);
     };
 
-    console.log(updatedAt);
     return (
         <Memo>
             <Styled.Date>
