@@ -1,10 +1,13 @@
 import { useMutation } from '@tanstack/react-query';
-import { updateMyDiary } from '../../api/auth';
+import { updateMyDiary } from '../../api/diary';
 import { toast } from 'react-hot-toast';
 
 export const useUpdateDiary = (setIsLoading) => {
     return useMutation(updateMyDiary, {
-        onSuccess: () => {
+        onSuccess: (response) => {
+            if (response?.data?.errors) {
+                return toast.error(`${response.data.errors[0].message}`);
+            }
             toast.success('일기가 수정 되었습니다.');
         },
         onError: () => {
