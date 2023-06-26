@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
-            retry: 3,
+            retry: 1,
         },
     },
 });
