@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as Styled from './style';
 
-const Select = ({ options, select, setSelect, dataValue, setFetchDiary }) => {
+const Select = ({ options, dataValue, filterState }) => {
     const [dropdown, setDropDown] = useState(false);
 
     const handleClick = (opt, e) => {
         setDropDown(false);
-        setSelect(opt);
-        setFetchDiary(e.target.dataset.value); /* 추가한 코드 */
+        filterState.changeOption(opt);
+        filterState.changeState(e.target.dataset.value);
     };
 
     return (
@@ -17,7 +17,7 @@ const Select = ({ options, select, setSelect, dataValue, setFetchDiary }) => {
                     setDropDown(!dropdown);
                 }}
             >
-                {select ? select : options[0]}
+                {filterState.basicOption}
                 {dropdown ? <Styled.StyledIcon down="true" /> : <Styled.StyledIcon />}
             </Styled.SelectedText>
             {dropdown && (
