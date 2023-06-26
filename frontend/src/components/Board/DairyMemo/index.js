@@ -25,9 +25,13 @@ const DairyMemo = ({ register, setValue, updatedAt, foundDiaryData }) => {
         setValue(name, value);
     };
 
+    console.log(updatedAt);
     return (
         <Memo>
-            <Styled.Date>{dateStringForm}</Styled.Date>
+            <Styled.Date>
+                {dateStringForm}
+                <span>날짜기준 : {updatedAt === 'updatedAt' ? '수정일' : '생성일'}</span>
+            </Styled.Date>
             <Styled.TitleBg>
                 <Styled.Tilte>제목</Styled.Tilte>
                 <Styled.TitleCont

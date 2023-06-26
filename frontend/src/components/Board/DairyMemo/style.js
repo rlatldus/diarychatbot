@@ -6,6 +6,11 @@ export const Date = styled.div`
     font-weight: bolder;
     border-bottom: 1px solid #b0b0b0;
     color: #460f0f;
+
+    & span {
+        margin-left: 0.8rem;
+        font-size: 1.2rem;
+    }
 `;
 export const TitleBg = styled.div`
     display: flex;
