@@ -1,4 +1,3 @@
-import React from 'react';
 import ClockLoader from 'react-spinners/ClockLoader';
 import * as Styled from './style';
 

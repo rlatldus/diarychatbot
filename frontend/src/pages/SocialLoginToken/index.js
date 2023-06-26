@@ -1,8 +1,9 @@
+import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+
 import { userStorage } from '../../util/userStorage';
 import { getToken } from '../../api/auth';
 
-import { useEffect } from 'react';
 import Loading from '../../components/@shared/Loading';
 
 const SocialLoginToken = () => {

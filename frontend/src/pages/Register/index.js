@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Header from '../../components/@shared/Header';
 import SignFrame from '../../components/Sign/SignFrame';
 import RegistBody from '../../components/Sign/RegistBody';
