@@ -1,86 +1,64 @@
-import * as Styled from './style';
+import { useState } from 'react';
+import useFormatDate from '../../../hooks/@shared/useFormatdate';
+
 import Sticker from '../../@shared/Sticker';
 import Memo from '../../@shared/Memo';
-import { useEffect, useState } from 'react';
 
-const DairyMemo = ({ formData, setFormData, updatedAt }) => {
-    const date = new Date();
-    date.setDate(date.getDate());
-    const dayOfWeek = date.getDay();
-    const dateForm = [date.getMonth() + 1, date.getDate()];
-    const daysOfWeek = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
-    const dayOfWeekString = daysOfWeek[dayOfWeek];
-    const [selectedSticker, setSelectedSticker] = useState(formData.color);
-    const stickers = [{ color: '#dfb1a3' }, { color: '#A5A2AA' }, { color: '#F3AC7F' }];
+import * as Styled from './style';
 
-    useEffect(() => {
-        const colorIndex = stickers.findIndex((sticker) => sticker.color === formData.color);
-        setSelectedSticker(colorIndex);
-    }, [formData.color]);
+const DairyMemo = ({ register, setValue, updatedAt, foundDiaryData }) => {
+    const dateStringForm = useFormatDate(foundDiaryData?.[updatedAt]);
+    const [selectedSticker, setSelectedSticker] = useState(foundDiaryData?.color);
 
-    const handleStickerClick = (index) => {
-        const color = stickers[index].color;
-        setSelectedSticker(index);
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            color: color,
-        }));
+    const stickers = [
+        { colorName: 'scarlet', colorCode: '#dfb1a3' },
+        { colorName: 'gray', colorCode: '#A5A2AA' },
+        { colorName: 'orange', colorCode: '#F3AC7F' },
+    ];
+
+    const startColorName = stickers.find(
+        (sticker) => sticker.colorCode === foundDiaryData?.color,
+    )?.colorName;
+
+    const handleClickSetValue = (name, value, colorCode) => {
+        setSelectedSticker(colorCode);
+        setValue(name, value);
     };
 
-    const handleInput = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value,
-        }));
-    };
     return (
         <Memo>
-            <Styled.Date>
-                {formData.createdAt && formData.updatedAt
-                    ? (() => {
-                          const updatedate = new Date(formData[updatedAt]);
-                          const updatedayOfWeek = updatedate.getUTCDay();
-                          const updatedaysOfWeek = [
-                              '일요일',
-                              '월요일',
-                              '화요일',
-                              '수요일',
-                              '목요일',
-                              '금요일',
-                              '토요일',
-                          ];
-                          const updatedayOfWeekString = updatedaysOfWeek[updatedayOfWeek];
-                          const datetime = formData[updatedAt];
-                          const [yearMonthDay, time] = datetime.split('T');
-                          const [year, month, day] = yearMonthDay.split('-');
-                          return `${month}월 ${day}일 ${updatedayOfWeekString}`;
-                      })()
-                    : `${dateForm[0]}월 ${dateForm[1]}일 ${dayOfWeekString}`}
-            </Styled.Date>
+            <Styled.Date>{dateStringForm}</Styled.Date>
             <Styled.TitleBg>
                 <Styled.Tilte>제목</Styled.Tilte>
                 <Styled.TitleCont
                     name="title"
                     placeholder="오늘 하루의 일기의 제목을 입력해주세요"
-                    value={formData.title}
-                    onChange={handleInput}
+                    defaultValue={foundDiaryData?.title}
+                    {...register('title')}
                 />
             </Styled.TitleBg>
             <Styled.Cont
                 name="ask"
                 placeholder="오늘 하루의 일기의 내용을 입력해주세요"
-                value={formData.ask}
-                onChange={handleInput}
+                defaultValue={foundDiaryData?.ask}
+                {...register('ask')}
             />
             <Styled.Text>원하시는 스티커 색상을 선택해주세요</Styled.Text>
             <Styled.Palette>
+                <input type="hidden" value={startColorName || ''} {...register('color')} />
                 {stickers.map((sticker, index) => (
                     <Sticker
                         key={index}
-                        color={sticker.color}
-                        isSelected={sticker.color === formData.color}
-                        onClick={() => handleStickerClick(index)}
+                        color={sticker.colorCode}
+                        data-value={sticker.colorName}
+                        isSelected={sticker.colorCode === selectedSticker}
+                        onClick={(e) =>
+                            handleClickSetValue(
+                                'color',
+                                e.target.dataset.value,
+                                e.target.getAttribute('color'),
+                            )
+                        }
                     />
                 ))}
             </Styled.Palette>

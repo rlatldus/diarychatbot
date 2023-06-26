@@ -1,64 +1,76 @@
-import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateDiary } from '../../../hooks/@query/useCreateDiary';
 import { useDeleteDiary } from '../../../hooks/@query/useDeleteDiary';
 import { useUpdateDiary } from '../../../hooks/@query/useUpdateDiary';
+
 import Button from '../../@shared/Button';
+
 import * as Styled from './style';
-const BoardFooter = ({ formData, isBoardURL, setFormData, setIsLoading }) => {
+
+const BoardFooter = ({
+    setIsLoading,
+    isLoading,
+    userId,
+    boardId,
+    foundDiaryData,
+    handleSubmit,
+    watch,
+}) => {
+    const color = watch('color');
+    const title = watch('title');
+    const ask = watch('ask');
+
     const navigate = useNavigate();
-    const [isAvailable, setIsAvailable] = useState(false);
-    const { mutate: deleteMyDiary } = useDeleteDiary(setIsLoading, navigate);
-    const createDiaryMutation = useCreateDiary(setIsLoading);
-    const UpdateMyDiaryMutation = useUpdateDiary(setIsLoading);
 
-    const CreateDiary = async () => {
-        setIsLoading(true);
-        const response = await createDiaryMutation.mutateAsync(formData);
-        if (response.data.errors == null) {
-            setFormData(response.data.data.createDiary);
-        } else {
-            alert('길이가 너무 길어서 작성이 어려워요');
-        }
+    const { mutate: CreateDiary } = useCreateDiary(setIsLoading, navigate);
+    const { mutate: UpdateDiary } = useUpdateDiary(setIsLoading);
+    const { mutate: DeleteMyDiary } = useDeleteDiary(setIsLoading, navigate, userId);
+
+    const trimAndReplaceNewLines = (text) => {
+        return text?.trim()?.replace(/\n/g, '\\n');
     };
 
-    const UpdateMyDiary = async () => {
+    const createDiary = (formData) => {
         setIsLoading(true);
-        const response = await UpdateMyDiaryMutation.mutateAsync(formData);
-        if (response.data.errors == null) {
-            setFormData(response.data.data.updateMyDiary);
-        } else {
-            alert('길이가 너무 길어서 수정이 어려워요');
-        }
+        formData.ask = trimAndReplaceNewLines(formData.ask);
+        CreateDiary(formData);
     };
 
-    const DeleteMyDiary = () => {
+    const updateMyDiary = (formData) => {
+        formData.id = boardId;
+        formData.ask = trimAndReplaceNewLines(formData.ask);
         setIsLoading(true);
-        deleteMyDiary({ id: formData.id });
+        UpdateDiary(formData);
     };
 
-    useEffect(() => {
-        setIsAvailable(formData.title && formData.ask && formData.color);
-    }, [formData.title, formData.ask, formData.color]);
+    const deleteMyDiary = () => {
+        setIsLoading(true);
+        DeleteMyDiary(foundDiaryData.id);
+    };
 
     return (
         <Styled.ButtonWrapper>
-            {!isBoardURL && (
-                <Button small primary onClick={UpdateMyDiary}>
+            {boardId && (
+                <Button small primary onClick={handleSubmit(updateMyDiary)} disabled={isLoading}>
                     수정하기
                 </Button>
             )}
-            {isBoardURL && (
-                <Button small primary onClick={CreateDiary} disabled={!isAvailable}>
+            {!boardId && (
+                <Button
+                    small
+                    primary
+                    onClick={handleSubmit(createDiary)}
+                    disabled={!(color && title && ask) || isLoading}
+                >
                     제출하기
                 </Button>
             )}
-            {!isBoardURL && (
-                <Button small primary onClick={DeleteMyDiary}>
+            {boardId && (
+                <Button small primary onClick={handleSubmit(deleteMyDiary)} disabled={isLoading}>
                     삭제하기
                 </Button>
             )}
-            <Link to="/main/:userId">
+            <Link to={`/main/${userId}`}>
                 <Button type="button" small>
                     돌아가기
                 </Button>

@@ -1,55 +1,52 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
+
 import AiMemo from '../AiMemo';
+import AccessDenied from '../../@shared/AccessDenied';
 import BoardFooter from '../BoardFooter';
 import DairyMemo from '../DairyMemo';
+
 import * as Styled from './style';
 
 const BoardBody = ({ fetchMyDiary, updatedAt }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const currentURL = window.location.href;
-    const isBoardURL = currentURL.endsWith('/Board/1');
-    const id = currentURL.split('/').pop();
-    const [formData, setFormData] = useState({
-        id: '',
-        answer: '',
-        title: '',
-        ask: '',
-        color: '',
-        createAt: '',
-        updatedAt: '',
-    });
+    const { userId, boardId } = useParams();
+    const { register, handleSubmit, setValue, watch } = useForm();
+    const foundDiaryData = fetchMyDiary?.find((diary) => diary.id === boardId);
 
-    useEffect(() => {
-        if (fetchMyDiary) {
-            const foundDiary = fetchMyDiary.find((diary) => diary.id === id);
-            if (foundDiary) {
-                setFormData(foundDiary);
-            }
-        }
-    }, [fetchMyDiary, id]);
+    if (boardId !== foundDiaryData?.id) return <AccessDenied />;
 
     const getBackgroundColor = (score) => {
         if (score > 70) {
             return '#FFAB99';
-        } else if (score <= 70 && score >= 30) {
-            return '#FFE0C2';
-        } else if (score < 30) {
-            return '#ACACAC';
         }
+        if (score >= 30) {
+            return '#FFE0C2';
+        }
+        return '#ACACAC';
     };
 
     return (
         <>
-            <Styled.GlobalStyle backgroundColor={getBackgroundColor(formData.score)} />
+            <Styled.GlobalStyle backgroundColor={getBackgroundColor(foundDiaryData?.score)} />
             <Styled.BoardBodyBg>
-                <DairyMemo formData={formData} setFormData={setFormData} updatedAt={updatedAt} />
-                <AiMemo formData={formData} isLoading={isLoading} />
+                <DairyMemo
+                    register={register}
+                    foundDiaryData={foundDiaryData}
+                    setValue={setValue}
+                    updatedAt={updatedAt}
+                />
+                <AiMemo foundDiaryData={foundDiaryData} isLoading={isLoading} />
             </Styled.BoardBodyBg>
             <BoardFooter
-                formData={formData}
-                setFormData={setFormData}
-                isBoardURL={isBoardURL}
+                foundDiaryData={foundDiaryData}
                 setIsLoading={setIsLoading}
+                isLoading={isLoading}
+                userId={userId}
+                boardId={boardId}
+                handleSubmit={handleSubmit}
+                watch={watch}
             />
         </>
     );
