@@ -4,10 +4,12 @@ import {
     Injectable,
     UnauthorizedException,
 } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../users/user.service';
 import * as jwt from 'jsonwebtoken';
 import { Cache } from 'cache-manager';
+import { type } from 'os';
 
 @Injectable()
 export class AuthService {
@@ -53,7 +55,13 @@ export class AuthService {
         // 2. 회원가입(가입 안되있을 시)
         if (!user) {
             const { password, ...rest } = req.user;
-            const createUser = { ...rest, hashedPassword: password };
+            console.log(typeof password);
+            const hashedPassword = await bcrypt.hash(
+                `${password}`,
+                +process.env.SALT,
+            );
+            console.log(password);
+            const createUser = { ...rest, hashedPassword };
             user = await this.userService.create({ ...createUser });
         }
         // console.log(process.env.MAIN_URI);
