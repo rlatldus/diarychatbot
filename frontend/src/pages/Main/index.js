@@ -1,14 +1,16 @@
+import { useParams } from 'react-router';
 import { useGetUser } from '../../hooks/@query/useGetUser';
 
-import React from 'react';
 import Header from '../../components/@shared/Header';
-
-import * as Styled from './style';
 import MainBody from '../../components/Main/MainBody';
 import Loading from '../../components/@shared/Loading';
+import AccessDenied from '../../components/@shared/AccessDenied';
+
+import * as Styled from './style';
 
 const Main = () => {
     const { isLoading: userLoading, data: userData } = useGetUser();
+    const { userId } = useParams();
 
     if (userLoading) {
         return <Loading />;
@@ -17,10 +19,12 @@ const Main = () => {
     const {
         data: {
             data: {
-                fetchUser: { name },
+                fetchUser: { name, id },
             },
         },
     } = userData;
+
+    if (userId !== id) return <AccessDenied />;
 
     return (
         <Styled.MainBg>
