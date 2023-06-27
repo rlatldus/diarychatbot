@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StickerAlign = styled.div`
-    width: ${(props) => (props.small ? '10rem' : '14rem')};
+    width: ${(props) => (props.small ? '10rem' : '100%')};
     height: ${(props) => (props.small ? '3.5rem' : '5rem')};
     cursor: ${(props) => (props.small ? 'default' : 'pointer')};
     z-index: ${(props) => props.isSelected && '1'};

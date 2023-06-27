@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const Cont = styled.div`
-    padding: 3rem;
-    min-width: 40rem;
+    padding: 1rem;
     min-height: 25rem;
+    width: 100%;
 `;
 
 export const ScoreBg = styled.div`
     text-align: center;
+    min-height: 25rem;
     @media (min-width: 65rem) {
         display: flex;
         justify-content: space-around;

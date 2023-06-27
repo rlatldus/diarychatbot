@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Field = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 0 1rem;
 `;
 
 export const Label = styled.label`
@@ -13,7 +12,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-    padding: 1.5rem 1rem;
+    padding: 1.5rem;
     margin-top: 0.8rem;
     border-radius: 0.4rem;
     ${(props) => props.errors[props.id] && 'border: 1px solid red;'}

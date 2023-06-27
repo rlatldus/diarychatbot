@@ -12,6 +12,7 @@ export const BoardCard = styled.div`
     @media (max-width: 560px) {
         width: 15rem;
         height: 25rem;
+        padding: 4rem 2rem;
     }
     &:hover {
         box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25), 0 1rem 1rem rgba(0, 0, 0, 0.22);
@@ -66,7 +67,7 @@ export const BoardDate = styled.div`
     bottom: 2.5rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+    width: 90%;
     text-align: center;
     font-size: 1.6rem;
 `;

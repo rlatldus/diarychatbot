@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Date = styled.div`
-    padding: 1rem 3rem;
+    padding: 1rem;
     font-size: 2.5rem;
     font-weight: bolder;
     border-bottom: 1px solid #b0b0b0;
@@ -19,7 +19,7 @@ export const TitleBg = styled.div`
     border-bottom: 1px solid #b0b0b0;
 `;
 export const Tilte = styled.label`
-    padding: 1rem 3rem;
+    padding: 1rem;
     width: 30%;
     font-size: 2.5rem;
     font-weight: bolder;
@@ -33,14 +33,18 @@ export const TitleCont = styled.textarea`
     box-sizing: border-box;
     border-left: 1px solid #b0b0b0;
     background-color: #faf7f4;
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid transparent;
     font-family: var(--font-notoSerifKR);
     &:focus {
         border: 1px solid black;
+        outline: none;
+        box-shadow: 0 0 0 1px black;
     }
 `;
 
 export const Cont = styled.textarea`
-    padding: 1rem 3rem;
+    padding: 1rem;
     overflow: auto;
     width: 100%;
     height: 35rem;
@@ -48,11 +52,13 @@ export const Cont = styled.textarea`
     box-sizing: border-box;
     font-size: 1.5rem;
     font-family: var(--font-notoSerifKR);
-    border-bottom: 1px solid #b0b0b0;
+    border: 1px solid #b0b0b0;
     background-color: #faf7f4;
 
     &:focus {
         border: 1px solid black;
+        outline: none;
+        box-shadow: 0 0 0 1px black;
     }
 `;
 export const Text = styled.span`
