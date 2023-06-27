@@ -4,7 +4,20 @@
 }
 
 :root {
+    font-size: 62.5%;
     --font-notoSerifKR: 'notoSerifKR';
+    -webkit-overflow-scrolling: auto;
+}
+@media (max-width: 450px) {
+    :root {
+        font-size: 58%;
+    }
+}
+
+@media (max-width: 320px) {
+    :root{
+        font-size: 50%;
+    }
 }
 
 * {
@@ -16,11 +29,6 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-html {
-    font-size: 62.5%;
-    -webkit-overflow-scrolling: auto;
-}
-
 body {
     font-size: 1.6rem;
     font-family: 'Noto Sans KR', sans-serif;
@@ -30,7 +38,6 @@ ul,
 ol,
 dl {
     list-style: none;
-
 }
 
 button {
