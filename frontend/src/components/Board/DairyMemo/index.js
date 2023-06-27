@@ -35,14 +35,14 @@ const DairyMemo = ({ register, setValue, updatedAt, foundDiaryData }) => {
                 <Styled.Tilte>제목</Styled.Tilte>
                 <Styled.TitleCont
                     name="title"
-                    placeholder="오늘 하루의 일기의 제목을 입력해주세요"
+                    placeholder="일기의 제목을 입력해주세요"
                     defaultValue={foundDiaryData?.title}
                     {...register('title')}
                 />
             </Styled.TitleBg>
             <Styled.Cont
                 name="ask"
-                placeholder="오늘 하루의 일기의 내용을 입력해주세요"
+                placeholder="일기의 내용을 입력해주세요"
                 defaultValue={foundDiaryData?.ask}
                 {...register('ask')}
             />

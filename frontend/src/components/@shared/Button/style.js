@@ -18,10 +18,10 @@ export const ButtonShadow = styled.div`
 `;
 
 export const ButtonCont = styled.button`
-    padding-left: ${(props) => (props.google || props.naver || props.kakao) && '40px'};
+    padding-left: ${(props) => (props.google || props.naver || props.kakao) && '4rem'};
     background-color: ${(props) =>
         props.primary
-            ? '#FF7549'
+            ? 'var(--amber)'
             : props.google
             ? '#CC3731'
             : props.kakao
@@ -37,7 +37,7 @@ export const ButtonCont = styled.button`
             ? '1px solid #F0C99A'
             : props.naver
             ? '1px solid #3F9324'
-            : '2px solid #FF7549'};
+            : '2px solid var(--amber)'};
     background-image: ${(props) =>
         props.google
             ? `url(${googleIMG})`
@@ -54,22 +54,12 @@ export const ButtonCont = styled.button`
     background-repeat: no-repeat;
     background-position: 20% center;
     background-size: 7%;
-    box-shadow: 0.7rem 0.7rem 0.7rem rgba(80, 29, 0, 0.16);
+    box-shadow: 0.7rem 0.7rem 0.7rem #501d0029;
     font-size: 1.6rem;
     font-weight: 600;
     cursor: pointer;
 
     &:active {
-        background-color: ${(props) =>
-            props.primary
-                ? ' #f96737'
-                : props.google
-                ? '#c6251f'
-                : props.kakao
-                ? '#ffcc01'
-                : props.naver
-                ? '#1cb501'
-                : '#e4ded0'};
         font-size: 1.7rem;
     }
 
@@ -83,7 +73,7 @@ export const ButtonCont = styled.button`
                 ? '#f3c200'
                 : props.naver
                 ? '#169500'
-                : '#e4ded0'};
+                : '#f4e4d6'};
     }
 
     &:disabled {

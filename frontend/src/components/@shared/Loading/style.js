@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const LoadingWrapper = styled.div`
+    position: fixed;
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
     inset: 0;
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-    z-index: 1000;
+    background-color: #ffffff33;
+    backdrop-filter: blur(0.5rem);
 `;

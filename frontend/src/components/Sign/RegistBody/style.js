@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const ContentWrapper = styled.main`
-    max-width: 40rem;
-    padding: 2rem;
     margin: 5rem auto 0;
+    padding: 2rem;
+    max-width: 40rem;
 `;
 
 export const Title = styled.h2`

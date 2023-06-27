@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
 export const TextSocialLogin = styled.span`
-    padding: 0 2rem;
-    font-size: 1.2rem;
-    color: #460f0f;
     position: absolute;
+    padding: 0 2rem;
+    color: #460f0f;
     background: #ffe0c2;
+    font-size: 1.2rem;
 `;
 
 export const Hr = styled.span`
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 6rem auto 0;
-    position: relative;
     max-width: 40rem;
-    height: 0.1rem;
+    height: 1px;
     background: #460f0f;
 `;

@@ -5,8 +5,8 @@ export const BoardWrapper = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     justify-items: center;
     gap: 5rem 2rem;
-    width: 100%;
     padding: 1rem;
+    width: 100%;
     @media screen and (min-width: 1280px) {
         grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     }

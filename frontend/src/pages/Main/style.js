@@ -4,8 +4,8 @@ import { NameCont } from '../../components/@shared/Name/style';
 
 export const MainBg = styled.div`
     width: 100%;
-    background-color: #ffe0c2;
     min-height: 100vh;
+    background-color: #ffe0c2;
 `;
 
 export const NameTitle = styled(NameCont)`

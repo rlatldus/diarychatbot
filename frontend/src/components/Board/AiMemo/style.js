@@ -1,25 +1,20 @@
 import styled from 'styled-components';
 
 export const Cont = styled.div`
-    padding: 1rem;
-    min-height: 25rem;
+    padding: 2rem;
     width: 100%;
+    min-height: 24rem;
 `;
 
 export const ScoreBg = styled.div`
     text-align: center;
-    min-height: 25rem;
-    @media (min-width: 65rem) {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
+    min-height: 30rem;
 `;
 export const Score = styled.div`
+    color: #ff6a49;
     font-size: 7rem;
     font-weight: bolder;
-    color: #ff6a49;
-    @media (min-width: 65rem) {
+    @media screen and (min-width: 65rem) {
         min-width: 15rem;
     }
 `;

@@ -18,7 +18,7 @@ const LoginBody = () => {
 
                 <LoginSocialForm />
                 <Styled.RegistLink>
-                    아직 회원이 아니신가요? <Link to="/regist">회원가입</Link>
+                    아직 회원이 아니신가요? <Link to="/regist"> 회원가입</Link>
                 </Styled.RegistLink>
             </Styled.Content>
         </Styled.ContentWrapper>

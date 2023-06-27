@@ -7,15 +7,16 @@
     font-size: 62.5%;
     --font-notoSerifKR: 'notoSerifKR';
     -webkit-overflow-scrolling: auto;
+    --amber: #ff7549;
 }
-@media (max-width: 450px) {
+@media  screen and (max-width: 450px) {
     :root {
         font-size: 58%;
     }
 }
 
-@media (max-width: 320px) {
-    :root{
+@media  screen and(max-width: 320px) {
+    :root {
         font-size: 50%;
     }
 }

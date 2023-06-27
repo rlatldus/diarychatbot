@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderBg = styled.header`
-    @media (min-width: 450px) {
+    @media screen and (min-width: 450px) {
         display: flex;
         gap: 2rem;
     }
@@ -14,19 +14,18 @@ export const Logo = styled.div`
     color: #460f0f;
     font-size: 3rem;
     font-family: var(--font-notoSerifKR);
-    @media (max-width: 764px) {
+    @media screen and (max-width: 764px) {
         font-size: 2rem;
         font-weight: 900;
     }
 `;
 
 export const LogoCont = styled.span`
-    color: #460f0f;
     white-space: nowrap;
+    color: #460f0f;
     font-size: 1.5rem;
-    vertical-align: bottom;
     letter-spacing: 1.5rem;
-    @media (max-width: 764px) {
+    @media screen and (max-width: 764px) {
         letter-spacing: 1.2rem;
         font-size: 1rem;
     }

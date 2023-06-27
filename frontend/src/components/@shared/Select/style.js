@@ -4,13 +4,13 @@ import { AiFillCaretDown } from 'react-icons/ai';
 export const Container = styled.div`
     position: relative;
     width: 20rem;
-    border-radius: 6px;
+    border-radius: o.6rem;
     background-color: #ffffff;
     align-self: center;
     border: 1px solid #ccc;
     z-index: 2;
 
-    border-radius: ${(props) => props.down && '6px 6px 0 0;'};
+    border-radius: ${(props) => props.down && '0.6rem 0.6rem 0 0;'};
 `;
 
 export const SelectedText = styled.div`
@@ -30,23 +30,23 @@ export const StyledIcon = styled(AiFillCaretDown)`
 
 export const SelectBox = styled.ul`
     position: absolute;
-    top: 100%;
-    overflow: hidden;
-    border-radius: 0px 0px 6px 6px;
-    color: black;
-    border: 1px solid #ccc;
-    border-top: none;
     z-index: 2;
     left: -1px;
+    top: 100%;
     width: 20rem;
+    color: black;
+    border-radius: 0 0 0.6rem 0.6rem;
+    border: 1px solid #ccc;
+    border-top: none;
+    overflow: hidden;
 
     li {
-        width: 20rem;
         padding: 1.2rem 0 1.2rem 1.2rem;
-        font-size: 1.5rem;
-        transition: background-color 0.2s ease-in;
+        width: 20rem;
         background: #fff;
+        font-size: 1.5rem;
         cursor: pointer;
+        transition: background-color 0.2s ease-in;
         &:hover {
             background-color: #ffbc9d;
             font-weight: 600;
