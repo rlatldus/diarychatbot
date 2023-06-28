@@ -98,10 +98,10 @@ export class ChatGPTService {
             // 데이터 가공
             const message = response.data.choices[0].message.content;
             const who = response.data.choices[0].message.role;
-            let scoreStr = response.data.choices[0].message.content.replace(
-                /[^0-9]/g,
-                '',
-            ); // 정규표현식사용 숫자 추출
+            console.log(message);
+            let scoreStr = response.data.choices[0].message.content
+                .replace(/\n/g, '')
+                .replace(/[^0-9]/g, ''); // 정규표현식사용 숫자 추출
             if (scoreStr === '') {
                 scoreStr = '0';
             } else if (scoreStr.length > 3) {
