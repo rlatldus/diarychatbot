@@ -20,7 +20,7 @@ export const Logo = styled.div`
     }
 `;
 
-export const LogoCont = styled.span`
+export const LogoCont = styled.p`
     color: var(--brawn);
     font-size: 1.5rem;
     letter-spacing: 1.5rem;
@@ -29,6 +29,7 @@ export const LogoCont = styled.span`
         font-size: 1rem;
     }
     @media screen and (max-width: 575px) {
+        padding-top: 1rem;
         max-width: 22rem;
     }
 `;

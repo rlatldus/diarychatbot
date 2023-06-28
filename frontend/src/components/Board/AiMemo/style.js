@@ -14,7 +14,7 @@ export const Score = styled.div`
     color: #ff6a49;
     font-size: 7rem;
     font-weight: bolder;
-    @media screen and (min-width: 65rem) {
+    @media screen and (min-width: 450px) {
         min-width: 15rem;
     }
 `;
