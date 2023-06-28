@@ -8,6 +8,7 @@
     --font-notoSerifKR: 'notoSerifKR';
     -webkit-overflow-scrolling: auto;
     --amber: #ff7549;
+    --brawn: #460f0f;
 }
 @media  screen and (max-width: 450px) {
     :root {

@@ -17,7 +17,7 @@ export const LogoCont = styled.p`
     vertical-align: bottom;
     padding-bottom: 2rem;
     width: 100%;
-    color: #460f0f;
+    color: var(--brawn);
     letter-spacing: 1.5rem;
     text-align: center;
     font-size: 1.5rem;

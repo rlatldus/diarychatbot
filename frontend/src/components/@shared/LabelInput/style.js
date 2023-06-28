@@ -11,7 +11,7 @@ export const Field = styled.div`
 
 export const Label = styled.label`
     margin-top: 0.6rem;
-    color: #460f0f;
+    color: var(--brawn);
     font-size: 1.4rem;
 `;
 

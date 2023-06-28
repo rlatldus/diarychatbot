@@ -11,7 +11,7 @@ export const HeaderBg = styled.header`
 `;
 
 export const Logo = styled.div`
-    color: #460f0f;
+    color: var(--brawn);
     font-size: 3rem;
     font-family: var(--font-notoSerifKR);
     @media screen and (max-width: 764px) {
@@ -21,7 +21,7 @@ export const Logo = styled.div`
 `;
 
 export const LogoCont = styled.span`
-    color: #460f0f;
+    color: var(--brawn);
     font-size: 1.5rem;
     letter-spacing: 1.5rem;
     @media screen and (max-width: 764px) {
