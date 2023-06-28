@@ -21,12 +21,14 @@ export const Logo = styled.div`
 `;
 
 export const LogoCont = styled.span`
-    white-space: nowrap;
     color: #460f0f;
     font-size: 1.5rem;
     letter-spacing: 1.5rem;
     @media screen and (max-width: 764px) {
         letter-spacing: 1.2rem;
         font-size: 1rem;
+    }
+    @media screen and (max-width: 575px) {
+        max-width: 22rem;
     }
 `;

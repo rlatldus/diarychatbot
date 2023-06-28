@@ -9,17 +9,21 @@ export const ContentWrapper = styled.main`
 `;
 
 export const Content = styled.div`
-    padding: 2rem;
+    padding-bottom: 2rem;
     max-width: 120rem;
 `;
 
 export const LogoCont = styled.p`
     vertical-align: bottom;
+    padding-bottom: 2rem;
     width: 100%;
     color: #460f0f;
     letter-spacing: 1.5rem;
     text-align: center;
     font-size: 1.5rem;
+    @media screen and (max-width: 495px) {
+        max-width: 30rem;
+    }
 `;
 
 export const RegistLink = styled.span`

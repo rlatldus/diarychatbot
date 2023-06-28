@@ -77,7 +77,7 @@ export const ButtonCont = styled.button`
     }
 
     &:disabled {
-        background-color: #e0e0e0;
+        background-color: #f4e4d6;
         cursor: not-allowed;
     }
 `;
