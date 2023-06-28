@@ -24,11 +24,17 @@ bcrypt, passport, OAUTH, JWT 사용해 회원 가입, 로그인, 탈퇴, redis �
 -배포 
 
 하나의 vm 서버에 
-nginx 사용해 reverse proxy를 사용한 MSA구조
+nginx 사용해 reverse proxy를 사용
 프론트엔드 서버와 백엔드 서버를 하나의 도커 컴포즈로 관리 및 배포
 같은 오리진 사용 => 비용을 최소화 한 구조라 생각해서 사용
  
 ![KakaoTalk_20230607_161532586](https://github.com/diaryChatbot/diarychatbot/assets/76115198/02a368b5-a650-4555-b643-f615e0788916)
+
+---
+Entities
+chatgpt
+![image](https://github.com/diaryChatbot/diarychatbot/assets/76115198/8049243c-1012-411c-b947-2c1d43753828)
+
 
 
 ---
@@ -63,5 +69,6 @@ docs에서 api 확인 가능
 ctrl+i 누르면 입력가능한 것들이 나온다!
 
 https://blog.naver.com/terry0222/223087247238
+
 
 
