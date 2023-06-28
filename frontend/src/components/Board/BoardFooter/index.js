@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useCreateDiary } from '../../../hooks/@query/useCreateDiary';
 import { useDeleteDiary } from '../../../hooks/@query/useDeleteDiary';
 import { useUpdateDiary } from '../../../hooks/@query/useUpdateDiary';
@@ -6,8 +6,10 @@ import { useUpdateDiary } from '../../../hooks/@query/useUpdateDiary';
 import Button from '../../@shared/Button';
 
 import * as Styled from './style';
+import { useLogout } from '../../../hooks/@query/useLogout';
 
 const BoardFooter = ({
+    fetchMyDiary,
     setIsLoading,
     isLoading,
     userId,
@@ -21,10 +23,12 @@ const BoardFooter = ({
     const ask = watch('ask');
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { mutate: CreateDiary } = useCreateDiary(setIsLoading, navigate);
     const { mutate: UpdateDiary } = useUpdateDiary(setIsLoading);
     const { mutate: DeleteMyDiary } = useDeleteDiary(setIsLoading, navigate, userId);
+    const { mutate: Logout } = useLogout(navigate);
 
     const trimAndReplaceNewLines = (text) => {
         return text?.trim()?.replace(/\n/g, '\\n');
@@ -48,6 +52,11 @@ const BoardFooter = ({
         DeleteMyDiary(foundDiaryData.id);
     };
 
+    const handleNavigate = () => {
+        if (location.state) return navigate(-3);
+
+        return navigate(-1);
+    };
     return (
         <Styled.ButtonWrapper>
             {boardId && (
@@ -70,11 +79,15 @@ const BoardFooter = ({
                     삭제하기
                 </Button>
             )}
-            <Link to={`/main/${userId}`}>
-                <Button type="button" small>
+            {fetchMyDiary.length !== 0 ? (
+                <Button type="button" small onClick={handleNavigate}>
                     돌아가기
                 </Button>
-            </Link>
+            ) : (
+                <Button type="button" small onClick={Logout}>
+                    로그아웃
+                </Button>
+            )}
         </Styled.ButtonWrapper>
     );
 };

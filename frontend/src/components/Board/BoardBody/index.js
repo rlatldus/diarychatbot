@@ -40,6 +40,7 @@ const BoardBody = ({ fetchMyDiary, updatedAt }) => {
                 <AiMemo foundDiaryData={foundDiaryData} isLoading={isLoading} />
             </Styled.BoardBodyBg>
             <BoardFooter
+                fetchMyDiary={fetchMyDiary}
                 foundDiaryData={foundDiaryData}
                 setIsLoading={setIsLoading}
                 isLoading={isLoading}

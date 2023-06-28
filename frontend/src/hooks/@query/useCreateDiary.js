@@ -10,7 +10,7 @@ export const useCreateDiary = (setIsLoading, navigate) => {
                 return toast.error(`${response.data.errors[0].message}`);
             }
             toast.success('일기작성에 성공했습니다.');
-            navigate(`${response.data.data.createDiary.id}`);
+            navigate(`${response.data.data.createDiary.id}`, { state: true });
             queryClient.invalidateQueries(['fetchDiary']);
         },
         onError: () => {
