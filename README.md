@@ -80,6 +80,14 @@
 </div>
 </details>
 
+## 개발 툴  
+
+- React, React-Router-Dom을 적용한 개발
+- Styled-Component를 활용하여 컴포넌트별 스타일 관리
+- Axios, React-query로 Api 통신 및 관리
+- Zustand를 사용한 상태관리
+
+
 <br>
 </div>
 </details>
