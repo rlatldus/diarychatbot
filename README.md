@@ -94,16 +94,6 @@ $ npm start
 - Axios, React-query로 Api 통신 및 관리
 - Zustand를 사용한 상태관리
 
-
-<br>
-
-## 개발 툴  
-
-- 타입스크립트를 적용한 리액트로 개발
-- module.scss를 활용하여 컴포넌트별 스타일 관리
-- scss 변수, mixins 활용하여 자주 사용하는 스타일 재사용 
-- Eslint, Prettier, Husky 활용하여 코드 컨벤션&문법 확인 자동화 
-
 React|Javascript | Doker|Prettier|
 | :--: | :--: | :--: | :--: |
 | <img src="https://techstack-generator.vercel.app/react-icon.svg" alt="react" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/js-icon.svg" alt="js" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/docker-icon.svg" alt="docker" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="icon" width="65" height="65" /> 
