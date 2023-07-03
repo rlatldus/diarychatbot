@@ -106,7 +106,7 @@ $ npm start
 
 React|Javascript | Doker|Prettier|
 | :--: | :--: | :--: | :--: |
-| <img src="https://techstack-generator.vercel.app/react-icon.svg" alt="react" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/js-icon.svg" alt="js" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/doker-icon.svg" alt="eslint" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="icon" width="65" height="65" /> 
+| <img src="https://techstack-generator.vercel.app/react-icon.svg" alt="react" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/js-icon.svg" alt="js" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/docker-icon.svg" alt="docker" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="icon" width="65" height="65" /> 
 
 
 <br>
