@@ -2,8 +2,16 @@
 읽기짱 봇 : 일기를 쓰면 오늘 하루 점수를 매겨주고 조언과 응원을 해주는 챗봇
 
 
+## 프로젝트 시작하기 
 
-<summary>폴더구조</summary>
+```plain text
+$ npm install
+$ npm start
+```
+
+<br>
+
+## 폴더구조
   
 ```
 📦 src
@@ -88,5 +96,23 @@
 
 
 <br>
+
+## 커뮤니케이션 툴 
+
+
+Notion|Github|Discord|
+| :--: | :--: | :--: |
+| <img alt="Notion logo" src="https://www.notion.so/cdn-cgi/image/format=auto,width=640,quality=100/front-static/shared/icons/notion-app-icon-3d.png" height="65" width="65">| <img alt="github logo" src="https://techstack-generator.vercel.app/github-icon.svg" width="65" height="65">| <img alt="Discord logo" src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/62595384e89d1d54d704ece7_3437c10597c1526c3dbd98c737c2bcae.svg" height="65" width="65"> |
+
+<br>
+
+| 이름   | Github                     | 포지션 및 역할   |
+| ------ | ------------------------------- | ---------------- |
+| 이승민 | https://github.com/newExpand    | FE               |
+| 김시연 | https://github.com/rlatldus     | FE               |
+| 재민   | https://github.com/yrttu0111    | BE               |
+
+<br>
+
 </div>
 </details>
