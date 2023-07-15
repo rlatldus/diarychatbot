@@ -2,6 +2,9 @@
 읽기짱 봇 : 일기를 쓰면 오늘 하루 점수를 매겨주고 조언과 응원을 해주는 챗봇
 
 
+![image](https://github.com/rlatldus/diarychatbot/assets/122216298/e674b088-c720-40b0-942f-168fd0dac845)
+
+
 ## 프로젝트 시작하기 
 
 ```plain text
