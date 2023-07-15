@@ -1,6 +1,9 @@
 # diarychatbot
-읽기짱 봇 : 일기를 쓰면 오늘 하루 점수를 매겨주고 조언과 응원을 해주는 챗봇
-
+읽기짱 봇 : 일기를 쓰면 오늘 하루 점수를 매겨주고 조언과 응원을 해주는 챗봇<br />
+- **`Team name` :** diarychatbot ( 오늘의 조언과 응원 받 사이트 제작 )
+- **`Project duration` :** 2023.05.30 - 2023.06.28
+- **`Team members` :** 이승민, 김시연, 재
+- **`Link` :** [라이언무비 방문하기](https://movie-33ea4.web.app/)
 
 ![image](https://github.com/rlatldus/diarychatbot/assets/122216298/e674b088-c720-40b0-942f-168fd0dac845)
 
